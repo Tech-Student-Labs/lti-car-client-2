@@ -8,9 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'carDealerClient';
 
-  public test = 'hello';
-
-  constructor() {
-    this.test = '';
-  }
+  constructor() {}
 }
