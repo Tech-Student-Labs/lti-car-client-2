@@ -80,13 +80,13 @@ describe('InventoryService', () => {
     });
   });
 
-  it('remove() should delete the vehicle from inventory', fakeAsync(() => {
+  it('removeVehicle() should delete the vehicle from inventory', fakeAsync(() => {
     //check if vehicle exists in inventory
     service.getByVIN(TOYOTA_VIN).subscribe((data) => {
       expect(data).toBeDefined();
     });
 
-    service.remove(TOYOTA_VIN);
+    service.removeVehicle(TOYOTA_VIN);
 
     tick();
 

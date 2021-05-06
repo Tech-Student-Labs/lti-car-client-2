@@ -21,7 +21,7 @@ export abstract class InventoryServiceAbstract {
     );
   }
 
-  public remove(vin: string): void {
+  public removeVehicle(vin: string): void {
     this.vehicles = this.vehicles.filter((v) => v.vin != vin);
   }
 
