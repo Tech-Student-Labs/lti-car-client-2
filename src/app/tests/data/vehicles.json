@@ -2,10 +2,25 @@
   {
     "make": "Toyota",
     "model": "Corolla",
-    "year": "2004",
+    "year": 2004,
+    "miles": 150000,
     "color": "silver",
-    "boughtPrice": "1000",
-    "salePrice": "1800",
-    "vin": "11112222"
+    "images": ["cool car", "sus"],
+    "offerPrice": 1000,
+    "sellingPrice": 1800,
+    "vin": "11112222",
+    "seller": 1
+  },
+  {
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2005,
+    "miles": 120000,
+    "color": "silver",
+    "images": ["ugly car", "vented"],
+    "offerPrice": 1000,
+    "sellingPrice": 1500,
+    "vin": "11112223",
+    "seller": 1
   }
 ]

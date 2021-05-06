@@ -3,8 +3,11 @@ import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
 import vehicles from './data/vehicles.json';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import Vehicle from '../models/Vehicle';
+import Vehicle from '../models/vehicle';
 import { of } from 'rxjs';
+import { InventoryServiceAbstract } from '../services/InventoryAbstract';
+
+// class InventoryServiceMock extends InventoryServiceAbstract {}
 
 describe('InventoryService', () => {
   let service: InventoryService;
@@ -13,6 +16,7 @@ describe('InventoryService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
+      providers: [],
     });
     service = TestBed.inject(InventoryService);
 
@@ -24,25 +28,13 @@ describe('InventoryService', () => {
   });
 
   it('getAll() should get all vehicles in inventory list', () => {
-    /*
-    Vehicle
-    --------
-    Make
-    Model
-    Year
-    Color
-    BoughtPrice
-    SalePrice
-    VIN
-    */
-
     const mockVehicles: Vehicle[] = [...vehicles];
 
     spyOn(httpService, 'get').and.returnValue(of(mockVehicles));
 
-    service.getAllVehicles();
-
-    expect(service.vehicles).toBeDefined();
+    service.getAllVehicles().subscribe((data) => {
+      expect(data.length).toBe(mockVehicles.length);
+    });
   });
 
   it('getByVIN() should get one vehicle by searching for its vin number', () => {

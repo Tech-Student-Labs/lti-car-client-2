@@ -2,18 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import Vehicle from '../models/Vehicle';
+import Vehicle from '../models/vehicle';
+import { InventoryServiceAbstract } from './InventoryAbstract';
 
 @Injectable({
   providedIn: 'root',
 })
-export class InventoryService {
-  public vehicles: Vehicle[] = [];
+export class InventoryService extends InventoryServiceAbstract {
+  public vehicles: Vehicle[];
 
   public endpoint: string = '';
 
   constructor(private http: HttpClient) {
-    this.getAllVehicles;
+    super();
+    this.getAllVehicles();
   }
 
   getAllVehicles(): Observable<Vehicle[]> {
