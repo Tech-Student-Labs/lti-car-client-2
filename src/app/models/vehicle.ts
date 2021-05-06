@@ -11,6 +11,10 @@ export default class Vehicle {
   seller: number;
 
   constructor() {}
+
+  public changePrice(newPrice: number): void {
+    this.sellingPrice = newPrice;
+  }
 }
 
 /*
