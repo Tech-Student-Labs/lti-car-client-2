@@ -1,8 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import Vehicle from '../models/vehicle';
 import { InventoryServiceAbstract } from './InventoryAbstract';
 
 @Injectable({
