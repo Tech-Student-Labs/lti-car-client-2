@@ -1,4 +1,4 @@
-export default interface Vehicle {
+export default class Vehicle {
   make: string;
   model: string;
   year: number;
@@ -9,4 +9,6 @@ export default interface Vehicle {
   offerPrice: number;
   sellingPrice: number;
   seller: number;
+
+  constructor() {}
 }

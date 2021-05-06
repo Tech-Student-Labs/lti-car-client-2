@@ -7,11 +7,14 @@ import Vehicle from '../models/vehicle';
 import { of } from 'rxjs';
 import { InventoryServiceAbstract } from '../services/InventoryAbstract';
 
-// class InventoryServiceMock extends InventoryServiceAbstract {}
+class InventoryServiceMock extends InventoryServiceAbstract {}
 
 describe('InventoryService', () => {
   let service: InventoryService;
   let httpService: HttpClient;
+  let serviceMock: InventoryServiceMock;
+
+  const mockVehicles: Vehicle[] = [...vehicles];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -21,6 +24,7 @@ describe('InventoryService', () => {
     service = TestBed.inject(InventoryService);
 
     httpService = TestBed.inject(HttpClient);
+    serviceMock = TestBed.inject(InventoryService);
   });
 
   it('should be created', () => {
@@ -28,12 +32,17 @@ describe('InventoryService', () => {
   });
 
   it('getAll() should get all vehicles in inventory list', () => {
-    const mockVehicles: Vehicle[] = [...vehicles];
-
     spyOn(httpService, 'get').and.returnValue(of(mockVehicles));
 
     service.getAllVehicles().subscribe((data) => {
+      console.log(data);
       expect(data.length).toBe(mockVehicles.length);
+    });
+  });
+
+  it('mock has default values', () => {
+    serviceMock.getAllVehicles().subscribe((data) => {
+      expect(data).toEqual(vehicles);
     });
   });
 
