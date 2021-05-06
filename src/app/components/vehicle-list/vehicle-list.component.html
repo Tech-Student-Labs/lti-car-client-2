@@ -1,1 +1,5 @@
-<app-vehicle *ngFor="let vehicle of vehicles"></app-vehicle>
+<h1>Vehicles:</h1>
+<app-vehicle
+  *ngFor="let vehicle of vehicles"
+  [vehicle]="vehicle"
+></app-vehicle>
