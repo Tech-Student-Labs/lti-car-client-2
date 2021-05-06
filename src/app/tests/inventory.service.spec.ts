@@ -47,19 +47,19 @@ describe('InventoryService', () => {
     });
   });
 
-  it('getByVIN() should get one vehicle by searching for its vin number', () => {
-    expect(service).toBeTruthy();
-  });
+  // it('getByVIN() should get one vehicle by searching for its vin number', () => {
+  //   expect(service).toBeTruthy();
+  // });
 
-  it('changeSalePrice() should change the sale price of a vehicle', () => {
-    expect(service).toBeTruthy();
-  });
+  // it('changeSalePrice() should change the sale price of a vehicle', () => {
+  //   expect(service).toBeTruthy();
+  // });
 
-  it('sold() should delete the vehicle from inventory', () => {
-    expect(service).toBeTruthy();
-  });
+  // it('sold() should delete the vehicle from inventory', () => {
+  //   expect(service).toBeTruthy();
+  // });
 
-  it('addVehicle() should add a vehicle to the inventory', () => {
-    expect(service).toBeTruthy();
-  });
+  // it('addVehicle() should add a vehicle to the inventory', () => {
+  //   expect(service).toBeTruthy();
+  // });
 });
