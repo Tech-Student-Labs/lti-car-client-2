@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehicle } from 'src/app/models/vehicle';
+import { InventoryService } from '../../services/inventory.service';
+import Vehicle from '../../models/vehicle';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -7,10 +8,15 @@ import { Vehicle } from 'src/app/models/vehicle';
   styleUrls: ['./vehicle-list.component.css'],
 })
 export class VehicleListComponent implements OnInit {
-  //TODO inject service
-  constructor() {}
+
+  constructor(private inventoryService: InventoryService) {
+  }
 
   vehicles: Vehicle[] = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.inventoryService.getAllVehicles().subscribe((data) => {
+      this.vehicles = data;
+    });
+  }
 }
