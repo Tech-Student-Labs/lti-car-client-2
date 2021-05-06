@@ -10,4 +10,14 @@ export abstract class InventoryServiceAbstract {
   public getAllVehicles(): Observable<Vehicle[]> {
     return of(this.vehicles);
   }
+
+  public getByVIN(vin: string): Observable<Vehicle> {
+    return of(this.vehicles.find((v) => v.vin == vin));
+  }
+
+  public changeSalePrice(vin: string, price: number): void {
+    this.getByVIN(vin).subscribe((vehicle) =>
+      vehicle.changePrice(price),
+    );
+  }
 }

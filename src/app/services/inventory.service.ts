@@ -18,11 +18,13 @@ export class InventoryService extends InventoryServiceAbstract {
     this.getAllVehicles();
   }
 
-  getAllVehicles(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(this.endpoint).pipe(
-      tap((data) => {
-        this.vehicles = data;
-      }),
-    );
-  }
+  //Commented out so the service uses mock data from the abstract
+
+  // getAllVehicles(): Observable<Vehicle[]> {
+  //   return this.http.get<Vehicle[]>(this.endpoint).pipe(
+  //     tap((data) => {
+  //       this.vehicles = data;
+  //     }),
+  //   );
+  // }
 }
