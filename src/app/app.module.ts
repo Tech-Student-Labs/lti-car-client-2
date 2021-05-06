@@ -6,9 +6,10 @@ import { InventoryModule } from './modules/inventory/inventory.module';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
