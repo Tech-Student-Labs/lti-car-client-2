@@ -7,9 +7,10 @@ import { Vehicle } from 'src/app/models/vehicle';
   styleUrls: ['./vehicle-list.component.css'],
 })
 export class VehicleListComponent implements OnInit {
+  //TODO inject service
   constructor() {}
 
-  vehicles : Vehicle[]= [];
+  vehicles: Vehicle[] = [];
 
   ngOnInit(): void {}
 }
