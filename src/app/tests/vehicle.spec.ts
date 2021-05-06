@@ -1,5 +1,4 @@
 import Vehicle, { convertVehicle } from '../models/vehicle';
-
 import vehicles from '../tests/data/vehicles.json';
 
 describe('Vehicle', () => {
