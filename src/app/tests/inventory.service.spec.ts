@@ -35,7 +35,6 @@ describe('InventoryService', () => {
     spyOn(httpService, 'get').and.returnValue(of(mockVehicles));
 
     service.getAllVehicles().subscribe((data) => {
-      console.log(data);
       expect(data.length).toBe(mockVehicles.length);
     });
   });
