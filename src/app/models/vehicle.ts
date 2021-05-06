@@ -1,3 +1,12 @@
-export class Vehicle {
-  //TODO: fill this out with vehicle info
+export default interface Vehicle {
+  make: string;
+  model: string;
+  year: number;
+  miles: number;
+  color: string;
+  images: string[];
+  vin: string;
+  offerPrice: number;
+  sellingPrice: number;
+  seller: number;
 }
