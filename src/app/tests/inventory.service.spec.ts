@@ -3,7 +3,7 @@ import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
 import vehicles from './data/vehicles.json';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import Vehicle from '../models/vehicle';
+import Vehicle, { convertVehicle } from '../models/vehicle';
 import { of } from 'rxjs';
 import { InventoryServiceAbstract } from '../services/InventoryAbstract';
 
@@ -14,7 +14,9 @@ describe('InventoryService', () => {
   let httpService: HttpClient;
   let serviceMock: InventoryServiceMock;
 
-  const mockVehicles: Vehicle[] = [...vehicles];
+  const mockVehicles: Vehicle[] = vehicles.map((v) =>
+    convertVehicle(v),
+  );
 
   beforeEach(() => {
     TestBed.configureTestingModule({

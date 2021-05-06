@@ -12,3 +12,9 @@ export default class Vehicle {
 
   constructor() {}
 }
+
+/*
+Takes a json for vehicle data and returns a instance of Vehicle
+*/
+export const convertVehicle = (data: object): Vehicle =>
+  Object.assign(new Vehicle(), data);
