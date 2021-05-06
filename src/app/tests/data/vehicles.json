@@ -1,0 +1,11 @@
+[
+  {
+    "make": "Toyota",
+    "model": "Corolla",
+    "year": "2004",
+    "color": "silver",
+    "boughtPrice": "1000",
+    "salePrice": "1800",
+    "vin": "11112222"
+  }
+]
