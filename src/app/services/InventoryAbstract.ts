@@ -20,4 +20,12 @@ export abstract class InventoryServiceAbstract {
       vehicle.changePrice(price),
     );
   }
+
+  public remove(vin: string): void {
+    this.vehicles = this.vehicles.filter((v) => v.vin != vin);
+  }
+
+  public addVehicle(data: object) {
+    this.vehicles.push(convertVehicle(data));
+  }
 }

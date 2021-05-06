@@ -8,14 +8,18 @@ import { InventoryServiceAbstract } from './InventoryAbstract';
 @Injectable({
   providedIn: 'root',
 })
-export class InventoryService extends InventoryServiceAbstract {
-  public vehicles: Vehicle[];
 
-  public endpoint: string = '';
+/*
+InventoryService
+Handles data of the inventory. Currently most implementation is commented out to allow mock data from abstract class to be used.
+*/
+export class InventoryService extends InventoryServiceAbstract {
+  // public vehicles: Vehicle[];
+
+  // public endpoint: string = '';
 
   constructor(private http: HttpClient) {
     super();
-    this.getAllVehicles();
   }
 
   //Commented out so the service uses mock data from the abstract

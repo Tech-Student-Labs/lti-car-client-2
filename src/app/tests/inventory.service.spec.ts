@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
 import vehicles from './data/vehicles.json';
@@ -10,6 +10,19 @@ import { InventoryServiceAbstract } from '../services/InventoryAbstract';
 class InventoryServiceMock extends InventoryServiceAbstract {}
 
 const TOYOTA_VIN = '123';
+
+const TEST_VEHICLE_JSON = {
+  make: 'AMONG',
+  model: 'US',
+  year: 2004,
+  miles: 220,
+  color: 'sus',
+  images: ['vent'],
+  vin: '666',
+  offerPrice: 123,
+  sellingPrice: 124,
+  seller: 1,
+};
 
 describe('InventoryService', () => {
   let service: InventoryService;
@@ -72,11 +85,30 @@ describe('InventoryService', () => {
     });
   });
 
-  // it('sold() should delete the vehicle from inventory', () => {
-  //   expect(service).toBeTruthy();
-  // });
+  it('remove() should delete the vehicle from inventory', fakeAsync(() => {
+    //check if vehicle exists in inventory
+    service.getByVIN(TOYOTA_VIN).subscribe((data) => {
+      expect(data).toBeDefined();
+    });
 
-  // it('addVehicle() should add a vehicle to the inventory', () => {
-  //   expect(service).toBeTruthy();
-  // });
+    service.remove(TOYOTA_VIN);
+
+    tick();
+
+    service.getByVIN(TOYOTA_VIN).subscribe((data) => {
+      expect(data).not.toBeDefined();
+    });
+  }));
+
+  it('addVehicle() should add a vehicle to the inventory', () => {
+    service.getByVIN('666').subscribe((data) => {
+      expect(data).not.toBeDefined();
+    });
+
+    service.addVehicle(TEST_VEHICLE_JSON);
+
+    service.getByVIN('666').subscribe((data) => {
+      expect(data).toBeDefined();
+    });
+  });
 });
