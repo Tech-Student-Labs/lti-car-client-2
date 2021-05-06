@@ -7,9 +7,9 @@ import Vehicle from '../../models/vehicle';
   styleUrls: ['./vehicle.component.css'],
 })
 export class VehicleComponent implements OnInit {
-  constructor() {}
-
   @Input() vehicle: Vehicle;
+
+  constructor() {}
 
   ngOnInit(): void {}
 }
