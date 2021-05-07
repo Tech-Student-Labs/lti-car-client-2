@@ -1,2 +1,1 @@
-export class VehicleSubmission {
-}
+export class VehicleSubmission {}

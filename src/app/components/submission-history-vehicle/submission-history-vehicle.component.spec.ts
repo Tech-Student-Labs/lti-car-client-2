@@ -8,13 +8,14 @@ describe('SubmissionHistoryVehicleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubmissionHistoryVehicleComponent ]
-    })
-    .compileComponents();
+      declarations: [SubmissionHistoryVehicleComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubmissionHistoryVehicleComponent);
+    fixture = TestBed.createComponent(
+      SubmissionHistoryVehicleComponent,
+    );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,9 +8,8 @@ describe('SubmissionHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubmissionHistoryComponent ]
-    })
-    .compileComponents();
+      declarations: [SubmissionHistoryComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

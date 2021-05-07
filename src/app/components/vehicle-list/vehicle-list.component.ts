@@ -8,9 +8,7 @@ import Vehicle from '../../models/vehicle';
   styleUrls: ['./vehicle-list.component.css'],
 })
 export class VehicleListComponent implements OnInit {
-
-  constructor(private inventoryService: InventoryService) {
-  }
+  constructor(private inventoryService: InventoryService) {}
 
   vehicles: Vehicle[] = [];
 
