@@ -24,4 +24,11 @@ describe('VehicleSubmissionService', () => {
       expect(data).toBeTruthy();
     });
   });
+
+  it('should be able to get a vehicle by VIN', () => {
+    service.addSubmission(convertVehicle(testVehicle));
+    service.getByVIN(testVehicle.vin).subscribe((data) => {
+      expect(data.vehicle.vin).toEqual(testVehicle.vin);
+    });
+  });
 });

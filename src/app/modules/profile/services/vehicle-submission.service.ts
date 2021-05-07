@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class VehicleSubmissionService {
-  vehicleSubmissions: VehicleSubmission[];
+  vehicleSubmissions: VehicleSubmission[] = [];
   constructor() {}
 
   addSubmission(vehicle: Vehicle): void {
@@ -20,6 +20,14 @@ export class VehicleSubmissionService {
     return of(
       this.vehicleSubmissions.filter((element) => {
         return element.vehicle.seller === userId;
+      }),
+    );
+  }
+
+  getByVIN(vin: string): Observable<VehicleSubmission> {
+    return of(
+      this.vehicleSubmissions.find((element) => {
+        return element.vehicle.vin === vin;
       }),
     );
   }
