@@ -1,22 +1,20 @@
 import { Injectable } from '@angular/core';
 import Vehicle from '../../../models/vehicle';
-import { VehicleSubmission } from '../../../models/vehicle-submission';
 import { Observable, of } from 'rxjs';
+import Submission from '../../../models/submission';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VehicleSubmissionService {
-  vehicleSubmissions: VehicleSubmission[] = [];
+  vehicleSubmissions: Submission[] = [];
   constructor() {}
 
   addSubmission(vehicle: Vehicle): void {
-    this.vehicleSubmissions.push(
-      new VehicleSubmission('pending', vehicle),
-    );
+    this.vehicleSubmissions.push(new Submission(vehicle));
   }
 
-  getByUser(userId: number): Observable<VehicleSubmission[]> {
+  getByUser(userId: number): Observable<Submission[]> {
     return of(
       this.vehicleSubmissions.filter((element) => {
         return element.vehicle.seller === userId;
@@ -24,7 +22,7 @@ export class VehicleSubmissionService {
     );
   }
 
-  getByVIN(vin: string): Observable<VehicleSubmission> {
+  getByVIN(vin: string): Observable<Submission> {
     return of(
       this.vehicleSubmissions.find((element) => {
         return element.vehicle.vin === vin;
@@ -40,13 +38,13 @@ export class VehicleSubmissionService {
     );
   }
 
-  updateStatus(vin: string, status: string): void {
+  updateStatus(vin: string, status: number): void {
     this.getByVIN(vin).subscribe((data) => {
       data.status = status;
     });
   }
 
-  getAll(): Observable<VehicleSubmission[]> {
+  getAll(): Observable<Submission[]> {
     return of(this.vehicleSubmissions);
   }
 }
