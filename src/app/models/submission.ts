@@ -7,14 +7,12 @@ export enum Status {
 }
 
 export default class Submission {
-  userId: string;
   vehicle: Vehicle;
   status: Status;
 
-  constructor(userId: string, vehicle: Vehicle) {
+  constructor(vehicle: Vehicle) {
     this.status = Status.Pending;
     this.vehicle = vehicle;
-    this.userId = userId;
   }
 
   public declineSubmission(): void {

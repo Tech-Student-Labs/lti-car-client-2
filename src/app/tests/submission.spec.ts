@@ -9,7 +9,7 @@ describe('Vehicle', () => {
 
   beforeEach(() => {
     vehicle = convertVehicle(vehicles[0]);
-    submission = new Submission('1', vehicle);
+    submission = new Submission(vehicle);
   });
 
   it('should create an instance', () => {
@@ -23,7 +23,6 @@ describe('Vehicle', () => {
   it('decline and accept submissions', () => {
     submission.acceptSubmission();
     expect(submission.status).toBe(Status.Accepted);
-
     submission.declineSubmission();
     expect(submission.status).toBe(Status.Declined);
   });
