@@ -11,7 +11,12 @@ describe('VehicleListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [VehicleListComponent],
-      providers: [{ provide: InventoryService, useClass: InventoryServiceAbstract }],
+      providers: [
+        {
+          provide: InventoryService,
+          useClass: InventoryServiceAbstract,
+        },
+      ],
     }).compileComponents();
   });
 
@@ -31,7 +36,8 @@ describe('VehicleListComponent', () => {
   });
 
   it('should create vehicle components for every vehicle in list', () => {
-    expect(document.querySelectorAll('app-vehicle').length).toEqual(2);
+    expect(document.querySelectorAll('app-vehicle').length).toEqual(
+      2,
+    );
   });
-
 });
