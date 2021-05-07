@@ -39,4 +39,10 @@ export class VehicleSubmissionService {
       },
     );
   }
+
+  updateStatus(vin: string, status: string): void {
+    this.getByVIN(vin).subscribe((data) => {
+      data.status = status;
+    });
+  }
 }

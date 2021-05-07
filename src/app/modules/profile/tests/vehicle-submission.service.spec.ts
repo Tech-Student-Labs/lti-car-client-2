@@ -37,4 +37,12 @@ describe('VehicleSubmissionService', () => {
     service.removeSubmission(testVehicle.vin);
     expect(service.vehicleSubmissions.length).toEqual(0);
   });
+
+  it('should be able to update the status of a vehicle submission', () => {
+    service.addSubmission(convertVehicle(testVehicle));
+    service.updateStatus(testVehicle.vin, 'Accepted');
+    service.getByVIN(testVehicle.vin).subscribe((data) => {
+      expect(data.status).toEqual('Accepted');
+    });
+  });
 });
