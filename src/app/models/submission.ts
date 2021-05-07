@@ -24,6 +24,6 @@ export default class Submission {
   }
 
   public isPending(): boolean {
-    return this.status == Status.Pending;
+    return this.status === Status.Pending;
   }
 }
