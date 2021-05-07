@@ -8,9 +8,8 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
+      declarations: [NavbarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -21,5 +20,21 @@ describe('NavbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('checks for html elements', () => {
+    const navbarDiv = fixture.nativeElement.querySelector(
+      '#navbarNav',
+    );
+    const navbarBrand = fixture.nativeElement.querySelector(
+      '.navbar-brand',
+    );
+    const loginButton: HTMLInputElement = fixture.nativeElement.querySelector(
+      '#login',
+    );
+    expect(navbarDiv).toBeDefined();
+    expect(navbarBrand).toBeDefined();
+    expect(loginButton).toBeDefined();
+    expect(loginButton.innerHTML.trim()).toEqual('Login');
   });
 });
