@@ -1,12 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { routes } from 'src/app/app-routing.module';
 import { NavbarComponent } from './navbar.component';
+
+import { Location } from '@angular/common';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
   let fixture: ComponentFixture<NavbarComponent>;
+  let router: Router;
+  let location: Location;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes(routes)],
       declarations: [NavbarComponent],
     }).compileComponents();
   });
@@ -15,6 +28,8 @@ describe('NavbarComponent', () => {
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
   });
 
   it('should create', () => {
@@ -36,4 +51,30 @@ describe('NavbarComponent', () => {
     expect(loginButton).toBeDefined();
     expect(loginButton.innerHTML.trim()).toEqual('Login');
   });
+
+  it('tests links', fakeAsync(() => {
+    const loginButton: HTMLInputElement = fixture.nativeElement.querySelector(
+      '#login',
+    );
+
+    loginButton.click();
+    tick();
+    fixture.detectChanges();
+    expect(location.path()).toEqual('/login');
+  }));
+
+  it('tests routes', fakeAsync(() => {
+    router.navigate(['']);
+    tick();
+    expect(location.path()).toEqual('/');
+    router.navigate(['/login']);
+    tick();
+    expect(location.path()).toEqual('/login');
+    router.navigate(['/submission']);
+    tick();
+    expect(location.path()).toEqual('/submission');
+    router.navigate(['/about-us']);
+    tick();
+    expect(location.path()).toEqual('/about-us');
+  }));
 });

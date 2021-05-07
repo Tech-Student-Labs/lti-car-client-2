@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SubmissionFormComponent } from './components/submission-form/submission-form.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: VehicleListComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'submission', component: SubmissionFormComponent },
