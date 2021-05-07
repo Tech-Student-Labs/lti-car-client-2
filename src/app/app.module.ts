@@ -3,17 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { InventoryModule } from './modules/inventory/inventory.module';
-import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
-import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProfileModule } from './modules/profile/profile.module';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, AboutUsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     InventoryModule,
+    ProfileModule,
     HttpClientModule,
   ],
   providers: [],
