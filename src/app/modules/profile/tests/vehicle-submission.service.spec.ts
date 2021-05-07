@@ -45,4 +45,11 @@ describe('VehicleSubmissionService', () => {
       expect(data.status).toEqual('Accepted');
     });
   });
+
+  it('should be able to get all the vehicle submissions', () => {
+    service.addSubmission(convertVehicle(testVehicle));
+    service.getAll().subscribe((data) => {
+      expect(data.length).toEqual(1);
+    });
+  });
 });

@@ -45,4 +45,8 @@ export class VehicleSubmissionService {
       data.status = status;
     });
   }
+
+  getAll(): Observable<VehicleSubmission[]> {
+    return of(this.vehicleSubmissions);
+  }
 }
