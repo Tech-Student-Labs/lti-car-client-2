@@ -3,9 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
 import { InventoryModule } from './modules/inventory/inventory.module';
-import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
-import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileModule } from './modules/profile/profile.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     InventoryModule,
+    ProfileModule,
     HttpClientModule,
   ],
   providers: [],
