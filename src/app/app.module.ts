@@ -7,9 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileModule } from './modules/profile/profile.module';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, AboutUsComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    AboutUsComponent,
+    LoginComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
