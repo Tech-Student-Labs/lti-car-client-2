@@ -23,7 +23,6 @@ describe('Vehicle', () => {
   it('decline and accept submissions', () => {
     submission.acceptSubmission();
     expect(submission.status).toBe(Status.Accepted);
-
     submission.declineSubmission();
     expect(submission.status).toBe(Status.Declined);
   });
