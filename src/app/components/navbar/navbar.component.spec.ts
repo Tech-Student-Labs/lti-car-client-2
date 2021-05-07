@@ -46,9 +46,9 @@ describe('NavbarComponent', () => {
     const loginButton: HTMLInputElement = fixture.nativeElement.querySelector(
       '#login',
     );
-    expect(navbarDiv).toBeDefined();
-    expect(navbarBrand).toBeDefined();
-    expect(loginButton).toBeDefined();
+    expect(navbarDiv).toBeTruthy();
+    expect(navbarBrand).toBeTruthy();
+    expect(loginButton).toBeTruthy();
     expect(loginButton.innerHTML.trim()).toEqual('Login');
   });
 
