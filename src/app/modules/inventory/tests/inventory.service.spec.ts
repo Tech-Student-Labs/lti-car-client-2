@@ -1,9 +1,9 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
-import vehicles from './data/vehicles.json';
+import vehicles from '../../../tests/data/vehicles.json';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import Vehicle, { convertVehicle } from '../models/vehicle';
+import Vehicle, { convertVehicle } from '../../../models/vehicle';
 import { of } from 'rxjs';
 import { InventoryServiceAbstract } from '../services/InventoryAbstract';
 

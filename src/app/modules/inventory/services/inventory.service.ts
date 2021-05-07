@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { InventoryServiceAbstract } from './InventoryAbstract';
-import Vehicle from '../models/vehicle';
+import Vehicle from '../../../models/vehicle';
 
 @Injectable({
   providedIn: 'root',

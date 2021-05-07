@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import Vehicle, { convertVehicle } from 'src/app/models/vehicle';
-import { InventoryService } from 'src/app/services/inventory.service';
-import { InventoryServiceAbstract } from 'src/app/services/InventoryAbstract';
+import { InventoryService } from 'src/app/modules/inventory/services/inventory.service';
+import { InventoryServiceAbstract } from 'src/app/modules/inventory/services/InventoryAbstract';
 import { VehicleComponent } from './vehicle.component';
-import vehicles from '../../tests/data/vehicles.json';
+import vehicles from '../../../../tests/data/vehicles.json';
 
 describe('VehicleComponent', () => {
   let component: VehicleComponent;
