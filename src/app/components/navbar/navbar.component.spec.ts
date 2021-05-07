@@ -56,7 +56,6 @@ describe('NavbarComponent', () => {
     const loginButton: HTMLInputElement = fixture.nativeElement.querySelector(
       '#login',
     );
-
     loginButton.click();
     tick();
     fixture.detectChanges();
