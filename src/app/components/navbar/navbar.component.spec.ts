@@ -63,17 +63,17 @@ describe('NavbarComponent', () => {
   }));
 
   it('tests routes', fakeAsync(() => {
-    router.navigate(['']);
-    tick();
-    expect(location.path()).toEqual('/');
-    router.navigate(['/login']);
-    tick();
-    expect(location.path()).toEqual('/login');
-    router.navigate(['/submission']);
-    tick();
-    expect(location.path()).toEqual('/submission');
-    router.navigate(['/about-us']);
-    tick();
-    expect(location.path()).toEqual('/about-us');
+    const routes: string[] = [
+      '/',
+      '/login',
+      '/submission',
+      '/about-us',
+    ];
+
+    routes.forEach((route) => {
+      router.navigate([route]);
+      tick();
+      expect(location.path()).toEqual(route);
+    });
   }));
 });
