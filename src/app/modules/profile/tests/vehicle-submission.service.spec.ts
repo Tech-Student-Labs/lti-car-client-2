@@ -31,4 +31,10 @@ describe('VehicleSubmissionService', () => {
       expect(data.vehicle.vin).toEqual(testVehicle.vin);
     });
   });
+
+  it('should be able to remove a vehicle submission', () => {
+    service.addSubmission(convertVehicle(testVehicle));
+    service.removeSubmission(testVehicle.vin);
+    expect(service.vehicleSubmissions.length).toEqual(0);
+  });
 });

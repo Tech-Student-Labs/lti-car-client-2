@@ -31,4 +31,12 @@ export class VehicleSubmissionService {
       }),
     );
   }
+
+  removeSubmission(vin: string): void {
+    this.vehicleSubmissions = this.vehicleSubmissions.filter(
+      (element) => {
+        return element.vehicle.vin !== vin;
+      },
+    );
+  }
 }
