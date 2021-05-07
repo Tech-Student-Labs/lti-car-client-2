@@ -4,11 +4,10 @@ import {
   TestBed,
   tick,
 } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes } from 'src/app/app-routing.module';
 import { NavbarComponent } from './navbar.component';
-
 import { Location } from '@angular/common';
 
 describe('NavbarComponent', () => {
@@ -16,6 +15,8 @@ describe('NavbarComponent', () => {
   let fixture: ComponentFixture<NavbarComponent>;
   let router: Router;
   let location: Location;
+  let loginButton: HTMLInputElement;
+  let fixelm: any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -30,6 +31,8 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
     router = TestBed.inject(Router);
     location = TestBed.inject(Location);
+    fixelm = fixture.nativeElement;
+    loginButton = fixelm.querySelector('#login');
   });
 
   it('should create', () => {
@@ -37,25 +40,21 @@ describe('NavbarComponent', () => {
   });
 
   it('checks for html elements', () => {
-    const navbarDiv = fixture.nativeElement.querySelector(
+    const htmlElements: String[] = [
       '#navbarNav',
-    );
-    const navbarBrand = fixture.nativeElement.querySelector(
       '.navbar-brand',
-    );
-    const loginButton: HTMLInputElement = fixture.nativeElement.querySelector(
       '#login',
-    );
-    expect(navbarDiv).toBeTruthy();
-    expect(navbarBrand).toBeTruthy();
-    expect(loginButton).toBeTruthy();
+    ];
+
+    htmlElements.forEach((element) => {
+      let e = fixture.nativeElement.querySelector(element);
+      expect(e).toBeTruthy();
+    });
+
     expect(loginButton.innerHTML.trim()).toEqual('Login');
   });
 
   it('tests links', fakeAsync(() => {
-    const loginButton: HTMLInputElement = fixture.nativeElement.querySelector(
-      '#login',
-    );
     loginButton.click();
     tick();
     fixture.detectChanges();
@@ -63,17 +62,10 @@ describe('NavbarComponent', () => {
   }));
 
   it('tests routes', fakeAsync(() => {
-    const routes: string[] = [
-      '/',
-      '/login',
-      '/submission',
-      '/about-us',
-    ];
-
-    routes.forEach((route) => {
-      router.navigate([route]);
+    routes.forEach((route: Route) => {
+      router.navigate([route.path]);
       tick();
-      expect(location.path()).toEqual(route);
+      expect(location.path()).toEqual(`/${route.path}`);
     });
   }));
 });
