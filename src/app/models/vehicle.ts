@@ -4,9 +4,9 @@ export default class Vehicle {
   year: number;
   miles: number;
   color: string;
-  images: string[] | null;
+  images: string[];
   vin: string;
-  user: string | null;
+  user: string;
   offerPrice: number;
   sellingPrice: number;
   seller: number;
