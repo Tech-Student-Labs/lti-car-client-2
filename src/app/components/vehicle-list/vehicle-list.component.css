@@ -1,7 +1,0 @@
-.vehicle-container {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(250px, 1fr));
-  column-gap: 16px;
-
-  padding: 32px;
-}
