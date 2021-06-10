@@ -14,18 +14,18 @@ InventoryService
 Handles data of the inventory. Currently most implementation is commented out to allow mock data from abstract class to be used.
 */
 export class InventoryService extends InventoryServiceAbstract {
-  public endpoint: string = '';
+  public endpoint: string = 'http://localhost:3000/Vehicle';
 
   constructor(private http: HttpClient) {
     super();
   }
 
   // Commented out so the service uses mock data from the abstract
-  // getAllVehicles(): Observable<Vehicle[]> {
-  //   return this.http.get<Vehicle[]>(this.endpoint).pipe(
-  //     tap((data) => {
-  //       this.vehicles = data;
-  //     }),
-  //   );
-  // }
+  getAllVehicles(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(this.endpoint).pipe(
+      tap((data) => {
+        this.vehicles = data;
+      })
+    );
+  }
 }

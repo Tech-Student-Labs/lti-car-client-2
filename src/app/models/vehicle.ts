@@ -6,6 +6,7 @@ export default class Vehicle {
   color: string;
   images: string[];
   vin: string;
+  user: string;
   offerPrice: number;
   sellingPrice: number;
   seller: number;
