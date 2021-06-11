@@ -32,12 +32,12 @@ describe('VehicleListComponent', () => {
   });
 
   it('should get all vehicle from service', () => {
-    expect(component.vehicles.length).toEqual(4);
+    expect(component.vehicles.length).toEqual(2);
   });
 
   it('should create vehicle components for every vehicle in list', () => {
     expect(document.querySelectorAll('app-vehicle').length).toEqual(
-      4,
+      2,
     );
   });
 });

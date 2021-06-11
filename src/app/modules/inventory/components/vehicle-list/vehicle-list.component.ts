@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoryService } from '../../services/inventory.service';
 import Vehicle from '../../../../models/vehicle';
+import InventoryVehicle from '../../../../models/inventory-vehicle';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,7 +11,7 @@ import Vehicle from '../../../../models/vehicle';
 export class VehicleListComponent implements OnInit {
   constructor(private inventoryService: InventoryService) {}
 
-  vehicles: Vehicle[] = [];
+  vehicles: InventoryVehicle[] = [];
 
   ngOnInit(): void {
     this.inventoryService.getAllVehicles().subscribe((data) => {
