@@ -22,5 +22,29 @@
     "offerPrice": 123,
     "sellingPrice": 124,
     "seller": 1
+  },
+  {
+    "make": "Mazda",
+    "model": "3",
+    "year": 2007,
+    "miles": 1100,
+    "color": "red",
+    "images": ["hello"],
+    "vin": "3212",
+    "offerPrice": 123,
+    "sellingPrice": 124,
+    "seller": 1
+  },
+  {
+    "make": "Mazda",
+    "model": "3",
+    "year": 2004,
+    "miles": 1100,
+    "color": "red",
+    "images": ["hello"],
+    "vin": "321",
+    "offerPrice": 123,
+    "sellingPrice": 124,
+    "seller": 1
   }
 ]
