@@ -14,7 +14,7 @@ InventoryService
 Handles data of the inventory. Currently most implementation is commented out to allow mock data from abstract class to be used.
 */
 export class InventoryService extends InventoryServiceAbstract {
-  public endpoint = 'http://localhost:5000/Inventory';
+  public endpoint = 'https://localhost:5001/Inventory';
 
   constructor(private http: HttpClient) {
     super();
