@@ -15,6 +15,5 @@ export class VehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicle = this.inventoryVehicle.vehicle;
-    console.log(this.vehicle.vehicleImages[0]);
   }
 }
