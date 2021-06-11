@@ -1,17 +1,25 @@
-<ul>
-  <li id='make'>{{ vehicle.make }}</li>
-  <li id='model'>{{ vehicle.model }}</li>
-  <li id='year'>{{ vehicle.year }}</li>
-  <li>{{ vehicle.year }}</li>
-  <li>{{ vehicle.miles }}</li>
-  <li>{{ vehicle.color}}</li>
-  <!-- Commented out because API does not return images -->
-  <li>
-      <img id='image' *ngIf='vehicle.vehicleImages != null' src={{ vehicle.vehicleImages[0].imageData }}/>
-  </li>
-  <li>{{ vehicle.vin }}</li>
-  <!-- Since this is the inventory, we want inventory price not seller price -->
-  <li>{{ inventoryVehicle.price }}</li>
-</ul>
-
-
+<div class='card'>
+  <img
+    *ngIf='vehicle.vehicleImages.length == 0; else loadImage'
+    class='card-img-top'
+    src='../../../assets/datsun510.jpg'
+    alt='Card image cap'
+  />
+  <ng-template #loadImage>
+    <img #loadImage src='{{ vehicle.vehicleImages[0].imageData }}'
+         class='card-img-top'
+         alt='{{vehicle.make}} {{vehicle.model}}'>
+  </ng-template>
+  <h5 class='card-title'>
+    {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+  </h5>
+  <div class='card-body'>
+    <p class='card-text'>
+      Current price: {{ vehicle.sellingPrice }}
+      <br />
+      Miles: {{ vehicle.miles }}
+      <br />
+      Color: {{ vehicle.color }}
+    </p>
+  </div>
+</div>
