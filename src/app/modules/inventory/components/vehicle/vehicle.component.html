@@ -1,12 +1,17 @@
 <ul>
-  <li id="make">{{ vehicle.make }}</li>
-  <li id="model">{{ vehicle.model }}</li>
-  <li id="year">{{ vehicle.year }}</li>
+  <li id='make'>{{ vehicle.make }}</li>
+  <li id='model'>{{ vehicle.model }}</li>
+  <li id='year'>{{ vehicle.year }}</li>
   <li>{{ vehicle.year }}</li>
   <li>{{ vehicle.miles }}</li>
-  <li>{{ vehicle.color }}</li>
+  <li>{{ vehicle.color}}</li>
   <!-- Commented out because API does not return images -->
-  <!-- <li id="thumbnail">{{ vehicle.images[0] }}</li> -->
+  <li>
+      <img id='image' *ngIf='vehicle.vehicleImages != null' src={{ vehicle.vehicleImages[0].imageData }}/>
+  </li>
   <li>{{ vehicle.vin }}</li>
-  <li>{{ vehicle.sellingPrice }}</li>
+  <!-- Since this is the inventory, we want inventory price not seller price -->
+  <li>{{ inventoryVehicle.price }}</li>
 </ul>
+
+

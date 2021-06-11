@@ -1,32 +1,36 @@
 import { Observable, of } from 'rxjs';
-// @ts-ignore
 import vehicles from '../../../tests/data/vehicles.json';
-import Vehicle, { convertVehicle } from '../../../models/vehicle';
+import InventoryVehicle, {
+  convertInventoryVehicle,
+} from '../../../models/inventory-vehicle';
 
 export abstract class InventoryServiceAbstract {
-  public vehicles: Vehicle[] = vehicles.map((data) =>
-    convertVehicle(data),
+  public vehicles: InventoryVehicle[] = vehicles.map((data) =>
+    convertInventoryVehicle(data),
   );
 
-  public getAllVehicles(): Observable<Vehicle[]> {
+  public getAllVehicles(): Observable<InventoryVehicle[]> {
     return of(this.vehicles);
   }
 
-  public getByVIN(vin: string): Observable<Vehicle> {
-    return of(this.vehicles.find((v) => v.vin == vin));
+  public getByVIN(vin: string): Observable<InventoryVehicle> {
+    return of(this.vehicles.find((v) => v.vehicle.vin === vin));
   }
 
-  public changeSalePrice(vin: string, price: number): void {
-    this.getByVIN(vin).subscribe((vehicle) =>
-      vehicle.changePrice(price),
+  // TODO
+  // public changeSalePrice(vin: string, price: number): void {
+  //   this.getByVIN(vin).subscribe((vehicle) =>
+  //     vehicle.changePrice(price),
+  //   );
+  // }
+
+  public removeVehicle(vin: string): void {
+    this.vehicles = this.vehicles.filter(
+      (v) => v.vehicle.vin !== vin,
     );
   }
 
-  public removeVehicle(vin: string): void {
-    this.vehicles = this.vehicles.filter((v) => v.vin != vin);
-  }
-
-  public addVehicle(data: object) {
-    this.vehicles.push(convertVehicle(data));
+  public addVehicle(data: object): void {
+    this.vehicles.push(convertInventoryVehicle(data));
   }
 }

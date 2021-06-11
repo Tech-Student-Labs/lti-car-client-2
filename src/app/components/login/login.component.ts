@@ -1,6 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  NgForm,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +21,11 @@ export class LoginComponent implements OnInit {
   router: Router;
   http: HttpClient;
 
-
-  constructor(private formBuilder: FormBuilder, _http: HttpClient, _router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    _http: HttpClient,
+    _router: Router,
+  ) {
     this.http = _http;
     this.router = _router;
   }
@@ -25,7 +33,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       UserName: ['', Validators.required],
-      Password: ['', Validators.required]
+      Password: ['', Validators.required],
     });
   }
   onSubmit(): void {
@@ -38,18 +46,23 @@ export class LoginComponent implements OnInit {
 
   login(form: FormGroup): void {
     const credentials = JSON.stringify(form.value);
-    this.http.post("https://localhost:5001/api/auth/login", credentials, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json",
+    this.http
+      .post('http://localhost:5000/api/auth/login', credentials, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
       })
-    }).subscribe(response => {
-      const token = (<any>response).token;
-      localStorage.setItem("jwt", token);
-      console.log(token);
-      this.invalidLogin = false;
-      this.router.navigate(["/"]);
-    }, err => {
-      this.invalidLogin = true;
-    });
+      .subscribe(
+        (response) => {
+          const token = (<any>response).token;
+          localStorage.setItem('jwt', token);
+          console.log(token);
+          this.invalidLogin = false;
+          this.router.navigate(['/']);
+        },
+        (err) => {
+          this.invalidLogin = true;
+        },
+      );
   }
 }
