@@ -41,12 +41,12 @@ describe('SignupComponent', () => {
     expect(element.querySelector('#Password')).toBeDefined();
   })
   it('Check To see if password confirmation works', () => {
-    const pass = component.signupForm.controls.Passwords;
+    const pass = component.signupForm;
     expect(pass?.valid).toBeFalse();
-    pass.setValue({Password:"LegitPass443", PasswordConfirm:"NotLegitPass443"});
+    pass.setValue({Password:"LegitPass443", PasswordConfirm:"NotLegitPass443", userName:"user5", Name:"jim45", Email:"jim@him.skim"});
     fixture.detectChanges();
     expect(pass?.valid).toBeFalse();
-    pass.setValue({Password:"LegitPass443", PasswordConfirm:"LegitPass443"});
+    pass.setValue({Password:"LegitPass443", PasswordConfirm:"LegitPass443", userName:"user5", Name:"jim45", Email:"jim@him.skim"});
     fixture.detectChanges();
     expect(pass?.valid).toBeTruthy();
   });

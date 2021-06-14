@@ -13,16 +13,15 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(4)]],
-      Name: ['', Validators.required],
-      Email: ['', Validators.required],
-      Passwords: this.fb.group({
-        Password: ['', [Validators.required, Validators.minLength(6)]],
-        PasswordConfirm:['', Validators.required]
-      },{validator : this.comparePasswords})
-    });
+      Name: ['', [Validators.required, Validators.minLength(4)]],
+      Email: ['', [Validators.required, Validators.minLength(4)]],
+      Password: ['', [Validators.required, Validators.minLength(6)]],
+      PasswordConfirm: ['', Validators.required]},
+      {validator : this.comparePasswords}
+    );
   }
   onSubmit(form: FormGroup){
-    //do stuff :)
+    alert('User has logged in');
   }
 
   comparePasswords(fb:FormGroup){
