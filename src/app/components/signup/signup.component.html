@@ -7,11 +7,13 @@
       </div>
   
       <!-- Login Form -->
-      <form [formGroup]="Signup"  (ngSubmit)="onSubmit(Signup)">
+      <form [formGroup]="signupForm"  (ngSubmit)="onSubmit(signupForm)">
         <input type="text" class="fadeIn second" id="Username" name="username" formControlName="userName" placeholder="Username" required>
-        <input type="password" id="Password" class="fadeIn third" name="password" formControlName="password" placeholder="Password" required>
+        <input type="password" id="Password" class="fadeIn third" name="password" formArrayName="Passwords" placeholder="Password" required>
+        <input type="password" id="PasswordConfirm" class="fadeIn third" formArrayName="Passwords" placeholder="Password" required>
         <input type="text" id="Name" class="fadeIn third" formControlName="Name" placeholder="Your Full Name">
-        <input type="email" id="Email" class="fadeIn fourth" formControlName="Email" placeholder="Email">
+        <input type="text" id="Email" class="fadeIn fourth" formControlName="Email" placeholder="Email">
+        <button [disabled]="!signupForm.valid" class="btn btn-primary btn-rounded fadeIn fith" (ngSubmit)="onSubmit(signupForm)" id ="submit" type="submit" >Create Account</button>
       </form>
       
       <!-- Create an Account rout -->

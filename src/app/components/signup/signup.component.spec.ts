@@ -40,4 +40,14 @@ describe('SignupComponent', () => {
   it('should render the password txt box', () => {
     expect(element.querySelector('#Password')).toBeDefined();
   })
+  it('Check To see if password confirmation works', () => {
+    const pass = component.signupForm.controls.Passwords;
+    expect(pass?.valid).toBeFalse();
+    pass.setValue({Password:"LegitPass443", PasswordConfirm:"NotLegitPass443"});
+    fixture.detectChanges();
+    expect(pass?.valid).toBeFalse();
+    pass.setValue({Password:"LegitPass443", PasswordConfirm:"LegitPass443"});
+    fixture.detectChanges();
+    expect(pass?.valid).toBeTruthy();
+  });
 });
