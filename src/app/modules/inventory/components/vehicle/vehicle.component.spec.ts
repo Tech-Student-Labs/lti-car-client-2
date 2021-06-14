@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import Vehicle, { convertVehicle } from 'src/app/models/vehicle';
-import { InventoryService } from 'src/app/modules/inventory/services/inventory.service';
-import { InventoryServiceAbstract } from 'src/app/modules/inventory/services/InventoryAbstract';
+import { convertInventoryVehicle } from 'src/app/models/inventory-vehicle';
 import { VehicleComponent } from './vehicle.component';
+import inventoryvehicles from '../../../../tests/data/inventoryvehicles.json';
 import vehicles from '../../../../tests/data/vehicles.json';
+import Vehicle, { convertVehicle } from '../../../../models/vehicle';
 
 describe('VehicleComponent', () => {
   let component: VehicleComponent;
@@ -19,7 +19,10 @@ describe('VehicleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(VehicleComponent);
     component = fixture.componentInstance;
-    component.vehicle = convertVehicle(vehicles[0]);
+    component.inventoryVehicle = convertInventoryVehicle(
+      inventoryvehicles[0],
+    );
+    component.vehicle = component.inventoryVehicle.vehicle;
     htmlElement = fixture.nativeElement;
     fixture.detectChanges();
   });
@@ -29,16 +32,17 @@ describe('VehicleComponent', () => {
   });
 
   it('should contain information about a given vehicle', () => {
-    expect(component.vehicle.make).toEqual('Toyota');
-    expect(component.vehicle.model).toEqual('Corolla');
-    expect(component.vehicle.vin).toEqual('123');
+    expect(component.vehicle.make).toEqual('Honda');
+    expect(component.vehicle.model).toEqual('Civic');
+    expect(component.vehicle.year).toEqual(2002);
     expect(component.vehicle.color).toEqual('red');
+    expect(component.inventoryVehicle.price).toEqual(6000);
+    expect(component.vehicle.miles).toEqual(110);
   });
 
   it('should render the elements displaying information about the vehicle', () => {
-    expect(htmlElement.querySelector('#make')).toBeTruthy;
-    expect(htmlElement.querySelector('#model')).toBeTruthy;
-    expect(htmlElement.querySelector('#year')).toBeTruthy;
-    expect(htmlElement.querySelector('#thumbnail')).toBeTruthy;
+    expect(htmlElement.querySelector('#image')).toBeTruthy;
+    expect(htmlElement.querySelector('#vehicle-type')).toBeTruthy();
+    expect(htmlElement.querySelector('#vehicle-info')).toBeTruthy;
   });
 });

@@ -20,7 +20,6 @@ export class InventoryService extends InventoryServiceAbstract {
     super();
   }
 
-  // Commented out so the service uses mock data from the abstract
   getAllVehicles(): Observable<InventoryVehicle[]> {
     return this.http
       .get<InventoryVehicle[]>(this.endpoint, {

@@ -14,6 +14,8 @@ export class VehicleComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.vehicle = this.inventoryVehicle.vehicle;
+    if (this.inventoryVehicle != null) {
+      this.vehicle = this.inventoryVehicle.vehicle;
+    }
   }
 }
