@@ -24,16 +24,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      UserName: ['', Validators.required],
-      Password: ['', Validators.required]
+      userName: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['',[Validators.required, Validators.minLength(6)]]
     });
   }
-  onSubmit(): void {
-    this.submitted = true;
+  onSubmit(form: FormGroup): void {
+    // this.submitted = true;
 
-    if (this.form.invalid) return;
-    this.loading = true;
-    this.login(this.form);
+    if (form.invalid) return;
+    // this.loading = true;
+    this.login(form);
   }
 
   login(form: FormGroup): void {
@@ -46,10 +46,10 @@ export class LoginComponent implements OnInit {
       const token = (<any>response).token;
       localStorage.setItem("jwt", token);
       console.log(token);
-      this.invalidLogin = false;
+      // this.invalidLogin = false;
       this.router.navigate(["/"]);
     }, err => {
-      this.invalidLogin = true;
+      // this.invalidLogin = true;
     });
   }
 }
