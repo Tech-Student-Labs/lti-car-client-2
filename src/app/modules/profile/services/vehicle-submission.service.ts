@@ -17,7 +17,7 @@ export class VehicleSubmissionService {
   getByUser(userId: number): Observable<Submission[]> {
     return of(
       this.vehicleSubmissions.filter((element) => {
-        return element.vehicle.seller === userId;
+        return element.vehicle.userId === userId;
       }),
     );
   }

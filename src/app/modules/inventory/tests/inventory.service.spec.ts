@@ -1,9 +1,11 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
-import vehicles from '../../../tests/data/vehicles.json';
+import inventoryvehicles from '../../../tests/data/inventoryvehicles.json';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import Vehicle, { convertVehicle } from '../../../models/vehicle';
+import InventoryVehicle, {
+  convertInventoryVehicle,
+} from '../../../models/inventory-vehicle';
 import { of } from 'rxjs';
 import { InventoryServiceAbstract } from '../services/InventoryAbstract';
 
@@ -26,8 +28,8 @@ describe('InventoryService', () => {
   let service: InventoryService;
   let httpService: HttpClient;
 
-  const mockVehicles: Vehicle[] = vehicles.map((v) =>
-    convertVehicle(v),
+  const mockVehicles: InventoryVehicle[] = inventoryvehicles.map(
+    (v) => convertInventoryVehicle(v),
   );
 
   beforeEach(() => {
@@ -43,7 +45,7 @@ describe('InventoryService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('httpget the mock vehicles should be functional', () => {
+  it('http get the mock vehicles should be functional', () => {
     spyOn(httpService, 'get').and.returnValue(of(mockVehicles));
     service.getAllVehicles().subscribe((data) => {
       expect(data).toEqual(mockVehicles);
