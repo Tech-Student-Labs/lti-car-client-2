@@ -11,5 +11,7 @@ export class SubmissionFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.submissionForm = this.formBuilder.group({});
+  }
 }

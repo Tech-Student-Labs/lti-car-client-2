@@ -2,10 +2,15 @@
 
 <!--  Submission form-->
   <form [formGroup]="submissionForm" >
-    <input type="text" id="login" class="fadeIn second" name="username" formControlName="userName" placeholder="Username" required>
-    <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="Password" required>
-    <button [disabled]="!loginForm.valid" class="btn btn-primary btn-rounded fadeIn fourth" (ngSubmit)="onSubmit(loginForm)" id ="submit" type="submit" >Log In</button>
+    <input type="text" id="make-submission" name="Make:" formControlName="make" placeholder="Make" required>
+    <input type='text' id='model-submission' name='Model:' formControlName='model' placeholder='Model' required>
+    <input type='text' id='year-submission' name='Year:' formControlName='year' placeholder='Year' required>
+    <input type='text' id='vin-submission' name='VIN:' formControlName='vin' placeholder='VIN' required>
+    <input type='text' id='miles-submission' name='Miles:' formControlName='miles' placeholder='Miles' required>
+    <input type='text' id='color-submission' name='Color:' formControlName='color' placeholder='Color' required>
+    <input type='file' id='images-submission' name='Vehicle photos:' formControlName='images' required>
+    <input type='text' id='price=submission' name='Price:' formControlName='price' placeholder='Price' required>
+    <input>
+    <button class="btn btn-primary btn-rounded fadeIn fourth" id ="submit-submission" type="submit" >Submit</button>
   </form>
-
-
 </div>
