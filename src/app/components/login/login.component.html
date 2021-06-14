@@ -7,10 +7,10 @@
     </div>
 
     <!-- Login Form -->
-    <form [formGroup]="form"  (ngSubmit)="onSubmit(form)">
+    <form [formGroup]="loginForm"  (ngSubmit)="onSubmit(loginForm)">
       <input type="text" id="login" class="fadeIn second" name="username" formControlName="userName" placeholder="Username" required>
       <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="Password" required>
-      <button [disabled]="!form.valid" class="btn btn-primary btn-rounded fadeIn fourth" (ngSubmit)="onSubmit(form)" id ="submit" type="submit" >Log In</button>
+      <button [disabled]="!loginForm.valid" class="btn btn-primary btn-rounded fadeIn fourth" (ngSubmit)="onSubmit(loginForm)" id ="submit" type="submit" >Log In</button>
     </form>
     
     <!-- Create an Account rout -->

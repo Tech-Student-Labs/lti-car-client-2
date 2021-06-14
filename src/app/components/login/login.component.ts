@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  loginForm: FormGroup;
   submitted = false;
   loading = false;
   invalidLogin = false;
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(4)]],
       password: ['',[Validators.required, Validators.minLength(6)]]
     });
