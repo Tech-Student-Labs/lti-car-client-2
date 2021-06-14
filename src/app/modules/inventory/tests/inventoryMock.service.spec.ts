@@ -10,16 +10,20 @@ import { InventoryServiceAbstract } from '../services/InventoryAbstract';
 const TOYOTA_VIN = '123';
 
 const TEST_VEHICLE_JSON = {
-  make: 'AMONG',
-  model: 'US',
-  year: 2004,
-  miles: 220,
-  color: 'sus',
-  images: ['vent'],
-  vin: '666',
-  offerPrice: 123,
-  sellingPrice: 124,
-  seller: 1,
+  id: 1,
+  price: 20,
+  inventoryVehicle: {
+    make: 'AMONG',
+    model: 'US',
+    year: 2004,
+    miles: 220,
+    color: 'sus',
+    vehicleImages: null,
+    vin: '666',
+    offerPrice: 123,
+    sellingPrice: 124,
+    seller: 1,
+  },
 };
 
 describe('InventoryService', () => {

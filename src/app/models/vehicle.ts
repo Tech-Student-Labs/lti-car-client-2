@@ -1,21 +1,29 @@
+import VehicleImage from './vehicle-image';
+
 export default class Vehicle {
+  id: number;
+  vin: string;
   make: string;
   model: string;
   year: number;
   miles: number;
   color: string;
-  images: string[];
-  vin: string;
-  user: string;
-  offerPrice: number;
+  vehicleImages: VehicleImage[];
   sellingPrice: number;
-  seller: number;
+  userId: number;
+  status: statusCode;
 
   constructor() {}
 
   public changePrice(newPrice: number): void {
     this.sellingPrice = newPrice;
   }
+}
+
+enum statusCode {
+  Pending,
+  Inventory,
+  Sold,
 }
 
 /*
