@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "price": 6000,
+    "inventoryVehicle":
+    {
+      "id": 2,
+      "vin": "5Z1SL39746U411411",
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2002,
+      "miles": 110,
+      "color": "red",
+      "images": null,
+      "vin": "321",
+      "sellingPrice": 124,
+      "status": 2,
+      "seller": 2
+    }
+  },
+  {
+    "id": 2,
+    "price": 10000,
+    "inventoryVehicle":
+    {
+      "id": 3,
+      "vin": "7T1SL646726411440",
+      "make": "Mazda",
+      "model": "3",
+      "year": 2007,
+      "miles": 1100,
+      "color": "red",
+      "images": null,
+      "vin": "3212",
+      "sellingPrice": 124,
+      "status": 2,
+      "seller": 3
+    }
+  }
+]
