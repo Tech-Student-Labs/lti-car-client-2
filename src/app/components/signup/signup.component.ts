@@ -12,10 +12,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(4)]],
-      Name: ['', [Validators.required, Validators.minLength(4)]],
-      Email: ['', [Validators.required, Validators.minLength(4)]],
-      Password: ['', [Validators.required, Validators.minLength(6)]],
+      userName: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+      Name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+      Email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(25)]],
+      Password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       PasswordConfirm: ['', Validators.required]},
       {validator : this.comparePasswords}
     );
