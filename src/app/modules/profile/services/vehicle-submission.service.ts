@@ -3,17 +3,39 @@ import Vehicle from '../../../models/vehicle';
 import { Observable, of } from 'rxjs';
 import Submission from '../../../models/submission';
 import VehicleImage from '../../../models/vehicle-image';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class VehicleSubmissionService {
   vehicleSubmissions: Submission[] = [];
+  endpoint = 'https://localhost:5001/Vehicle';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  addSubmission(vehicle: Vehicle): void {
-    this.vehicleSubmissions.push(new Submission(vehicle));
+  addSubmission(vehicle: Vehicle): string {
+    this.http
+      .post(this.endpoint, vehicle, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+        observe: 'response',
+      })
+      .subscribe(
+        (response) => {
+          const redirectUri: string = response.headers.get(
+            'location',
+          );
+          // TODO: remove this, and just redirect
+          alert('Vehicle successfully submitted!');
+          return redirectUri;
+        },
+        (err) => {
+          alert('Vehicle could not be submitted. Please try again.');
+        },
+      );
+    return '/submission';
   }
 
   getByUser(userId: number): Observable<Submission[]> {
@@ -50,18 +72,11 @@ export class VehicleSubmissionService {
     return of(this.vehicleSubmissions);
   }
 
-  convertVehicleImagesToString(files): VehicleImage[] {
-    // tslint:disable-next-line:prefer-const
-    let images: VehicleImage[];
-    const fileReader = new FileReader();
-    // for (let i = 0; i < files.length; i++) {
-    // tslint:disable-next-line:prefer-const
-    let vehicleImage = new VehicleImage();
-    vehicleImage.imageData =
-      'data:image/jpg;base64,' +
-      fileReader.readAsBinaryString(files[0]);
-    images.push(vehicleImage);
-    // }
-    return images;
-  }
+  imageToBase64 = (file: File) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 }
