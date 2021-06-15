@@ -4,13 +4,16 @@ import { VehicleSubmissionService } from '../services/vehicle-submission.service
 import { convertVehicle } from '../../../models/vehicle';
 import testVehicles from '../../../tests/data/vehicles.json';
 import { Status } from '../../../models/submission';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('VehicleSubmissionService', () => {
   let service: VehicleSubmissionService;
   const testVehicle = testVehicles[0];
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
     service = TestBed.inject(VehicleSubmissionService);
   });
 

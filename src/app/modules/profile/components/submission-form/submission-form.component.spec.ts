@@ -7,6 +7,7 @@ import { InventoryService } from '../../../inventory/services/inventory.service'
 import { InventoryServiceAbstract } from '../../../inventory/services/InventoryAbstract';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SubmissionFormComponent', () => {
   let component: SubmissionFormComponent;
@@ -30,6 +31,7 @@ describe('SubmissionFormComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
+        HttpClientTestingModule,
       ],
       declarations: [SubmissionFormComponent],
       providers: [{ provide: VehicleSubmissionService }],
