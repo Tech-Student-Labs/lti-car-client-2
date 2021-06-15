@@ -3,6 +3,7 @@
     
     <div class="img-container">
       <img
+        id="image"
         *ngIf='vehicle.vehicleImages.length == 0; else loadImage'
         class='card-img-top'
         src='../../../assets/datsun510.jpg'
@@ -11,17 +12,19 @@
     </div>
 
     <ng-template #loadImage>
-      <img src='{{ vehicle.vehicleImages[0].imageData }}'
-          class='card-img-top'
-          alt='{{vehicle.make}} {{vehicle.model}}'>
+      <img 
+        id="image"
+        src='{{ vehicle.vehicleImages[0].imageData }}'
+        class='card-img-top'
+        alt='{{vehicle.make}} {{vehicle.model}}'>
     </ng-template>
 
-    <h5 class='card-title'>
+    <h5 id="vehicle-type" class='card-title'>
       {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
     </h5>
 
     <div class='card-body'>
-      <p class='card-text'>
+      <p id="vehicle-info" class='card-text'>
         <!--  Need to get the inventory price, not selling price    -->
         Current price: {{ inventoryVehicle.price }}
         <br />
