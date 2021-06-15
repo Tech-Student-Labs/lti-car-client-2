@@ -21,12 +21,12 @@ describe('VehicleSubmissionService', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('should be able to submit vehicle', () => {
-  //   service.addSubmission(convertVehicle(testVehicle));
-  //   service.getByUser(testVehicle.seller).subscribe((data) => {
-  //     expect(data).toBeTruthy();
-  //   });
-  // });
+  it('should be able to submit vehicle', () => {
+    service.addSubmission(convertVehicle(testVehicle));
+    service.getByUser(testVehicle.seller).subscribe((data) => {
+      expect(data).toBeTruthy();
+    });
+  });
   //
   // it('should be able to get a vehicle by VIN', () => {
   //   service.addSubmission(convertVehicle(testVehicle));
