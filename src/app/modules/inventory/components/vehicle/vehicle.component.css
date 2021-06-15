@@ -1,14 +1,13 @@
-.card-title {
-  padding-left: 16px;
-  padding-top: 8px;
-}
-
 .card {
+  min-height: 26em;
+  max-height: 26em;
   min-width: 250px;
+  max-width: 250px;
   width: 100%;
 }
-.col-md-4 {
-  max-width: 100%;
+
+.col-sm-3 {
+  width: 100%;
 }
 
 .img-container {
@@ -19,4 +18,8 @@
 img {
   height: 200px;
   width: 200px;
+}
+
+.card-title {
+  padding: 0.5em 1em;
 }
