@@ -1,12 +1,12 @@
 import { Observable, of } from 'rxjs';
-import vehicles from '../../../tests/data/vehicles.json';
+import inventoryvehicles from '../../../tests/data/inventoryvehicles.json';
 import InventoryVehicle, {
   convertInventoryVehicle,
 } from '../../../models/inventory-vehicle';
 
 export abstract class InventoryServiceAbstract {
-  public vehicles: InventoryVehicle[] = vehicles.map((data) =>
-    convertInventoryVehicle(data),
+  public vehicles: InventoryVehicle[] = inventoryvehicles.map(
+    (data) => convertInventoryVehicle(data),
   );
 
   public getAllVehicles(): Observable<InventoryVehicle[]> {
