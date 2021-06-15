@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-submission-form',
@@ -12,6 +12,15 @@ export class SubmissionFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.submissionForm = this.formBuilder.group({});
+    this.submissionForm = this.formBuilder.group({
+      make: ['', Validators.required],
+      model: ['', Validators.required],
+      year: ['', Validators.required],
+      vin: ['', Validators.required],
+      miles: ['', Validators.required],
+      color: ['', Validators.required],
+      images: ['', Validators.required],
+      price: ['', Validators.required],
+    });
   }
 }
