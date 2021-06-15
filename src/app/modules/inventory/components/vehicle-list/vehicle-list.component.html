@@ -2,10 +2,9 @@
 
   <h1>Vehicle Inventory</h1>
 
-  <div class="vehicle-container">
-    <app-vehicle
-      *ngFor="let vehicle of vehicles"
-      [inventoryVehicle]="vehicle"
-    ></app-vehicle>
+  <div class="container">
+    <div *ngFor="let vehicle of vehicles" class="custom-styling card-deck mx-auto">
+      <app-vehicle [inventoryVehicle]="vehicle"></app-vehicle>
+    </div>
   </div>
 </div>

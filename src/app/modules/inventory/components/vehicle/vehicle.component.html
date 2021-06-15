@@ -1,10 +1,11 @@
-<div class="col-md-3">
-  <div class='card mb-3 shadow-sm'>
+<div class="col-md-4">
+  <div class='card mb-4 shadow-sm'>
+    
     <div class="img-container">
       <img
         *ngIf='vehicle.vehicleImages.length == 0; else loadImage'
         class='card-img-top'
-        src='/src/assets/datsun510.jpg'
+        src='../../../assets/datsun510.jpg'
         alt='Card image cap'
       />
     </div>
@@ -29,5 +30,6 @@
         Color: {{ vehicle.color }}
       </p>
     </div>
+
   </div>
 </div>
