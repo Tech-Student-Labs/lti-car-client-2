@@ -41,8 +41,8 @@ describe('VehicleComponent', () => {
   });
 
   it('should render the elements displaying information about the vehicle', () => {
-    expect(htmlElement.querySelector('#image')).toBeTruthy;
+    expect(htmlElement.querySelector('#image')).toBeTruthy();
     expect(htmlElement.querySelector('#vehicle-type')).toBeTruthy();
-    expect(htmlElement.querySelector('#vehicle-info')).toBeTruthy;
+    expect(htmlElement.querySelector('#vehicle-info')).toBeTruthy();
   });
 });
