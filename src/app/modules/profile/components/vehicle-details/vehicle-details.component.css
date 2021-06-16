@@ -1,0 +1,12 @@
+.vehicle-container {
+  text-align: center;
+}
+#vehicle-images {
+  height: 250px;
+  width: 250px;
+  text-align: center;
+}
+
+.carousel-item {
+  text-align: center;
+}
