@@ -2,13 +2,13 @@
   <div class='vehicle-container'>
     <!--  Carousel   -->
     <div id='vehicle-carousel w-50' class='carousel slide' data-bs-ride='carousel'>
-      <div class='carousel-inner'>
+      <div class='carousel-inner w-50'>
         <div *ngIf='vehicle.vehicleImages.length == 0; else loadimages' class='carousel-item active'>
           <img class='w-100 d-block' src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' alt='Vehicle Image' />
         </div>
         <ng-template #loadimages>
           <div *ngFor='let img of vehicle.vehicleImages' class='carousel-item active'>
-            <img class='d-block w-100' id='{{img.imageData}}' src='{{img.imageData}}'
+            <img class='d-block w-50' id='{{img.imageData}}' src='{{img.imageData}}'
                  alt='{{img.id}}'>
           </div>
         </ng-template>

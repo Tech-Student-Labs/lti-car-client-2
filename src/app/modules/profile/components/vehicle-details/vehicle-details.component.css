@@ -36,3 +36,8 @@ h3 {
   height: 200px;
   width: 50%;
 }
+
+#vehicle-carousel{
+  width: 200px;
+  text-align: center;
+}
