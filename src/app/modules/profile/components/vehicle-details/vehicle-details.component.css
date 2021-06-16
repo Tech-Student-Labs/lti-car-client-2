@@ -1,12 +1,33 @@
 .vehicle-container {
   text-align: center;
 }
+
 #vehicle-images {
   height: 250px;
   width: 250px;
   text-align: center;
 }
 
-.carousel-item {
+.vehicle-title {
+  font-size: 3em;
+  font-weight: 600;
+}
+
+.vehicle-price {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.vehicle-info-container {
   text-align: center;
+}
+
+.vehicle-info {
+  margin: auto;
+  text-align: left;
+  width: 20em;
+}
+
+h3 {
+  font-size: 2em;
 }

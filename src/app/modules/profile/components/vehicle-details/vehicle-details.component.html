@@ -1,7 +1,7 @@
 <div *ngIf='vehicle != null'>
-  <div class='vehicle-container'></div>
+<div class='vehicle-container'>
   <div id='vehicle-images' class='carousel slide' data-ride='carousel'>
-    <div id='' class='carousel-inner'>
+    <div class='carousel-inner'>
       <div *ngIf='vehicle.vehicleImages.length == 0'  class='carousel-item active'>
       <img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="1" />
       </div>
@@ -19,7 +19,7 @@
         </span>
       </a>
       <a href='#1' role='button' data-bs-slide='next'
-         class='carousel-control-next'>
+        class='carousel-control-next'>
         <span aria-hidden='true'
               class='carousel-control-next-icon'>
         </span>
@@ -27,13 +27,20 @@
           class='visually-hidden'>Next</span></a></div>
   </div>
 
-  <div id='make'>Make: {{vehicle.make}}</div>
-  <div id='model'>Model: {{vehicle.model}}</div>
-  <div id='year'>Year: {{vehicle.year}}</div>
-  <div id='vin'>VIN: {{vehicle.vin}}</div>
-  <div id='miles'>Miles: {{vehicle.miles}}</div>
-  <div id='color'>Color: {{vehicle.color}}</div>
-  <div id='price'>Price: {{vehicle.sellingPrice}}</div>
-  <div id='owner'>Owner: {{vehicle.userId}}</div>
-  <div id='status'>Status: {{vehicle.status}}</div>
+  <div id='make model year' class="vehicle-title">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
+  <div class="vehicle-price">
+    <p id='price'>MSRP: {{vehicle.sellingPrice}}</p>
+  </div>
+  <div class="vehicle-info-container">
+    <div class="vehicle-info">
+      <h3>Basic Information</h3>
+      <p id='vin'>VIN: {{vehicle.vin}}</p>
+      <p id='miles'>Miles: {{vehicle.miles}}</p>
+      <p id='color'>Color: {{vehicle.color}}</p>
+      <p id='owner'>Owner: {{vehicle.userId}}</p>
+      <p id='status'>Status: {{vehicle.status}}</p>
+    </div>
+  </div>
 </div>
+</div>
+
