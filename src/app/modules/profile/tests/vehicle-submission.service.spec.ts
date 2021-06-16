@@ -1,20 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 
 import { VehicleSubmissionService } from '../services/vehicle-submission.service';
-import { convertVehicle } from '../../../models/vehicle';
+import Vehicle, { convertVehicle } from '../../../models/vehicle';
 import testVehicles from '../../../tests/data/vehicles.json';
 import { Status } from '../../../models/submission';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 describe('VehicleSubmissionService', () => {
   let service: VehicleSubmissionService;
   const testVehicle = testVehicles[0];
+  let http: HttpClient;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(VehicleSubmissionService);
+    http = TestBed.inject(HttpClient);
   });
 
   it('should be created', () => {
@@ -22,11 +26,19 @@ describe('VehicleSubmissionService', () => {
   });
 
   it('should be able to submit vehicle', () => {
-    service.addSubmission(convertVehicle(testVehicle));
-    service.getByUser(testVehicle.seller).subscribe((data) => {
-      expect(data).toBeTruthy();
-    });
+    spyOn(http, 'post').and.returnValue(of(testVehicle));
+    expect(
+      service.addSubmission(convertVehicle(testVehicle)),
+    ).toBeTruthy();
   });
+
+  it('should be able to get a vehicle by id', () => {
+    let returnedVehicle: Vehicle;
+    spyOn(http, 'get').and.returnValue(of(testVehicle));
+    service.getByID(1).subscribe((data) => (returnedVehicle = data));
+    expect(returnedVehicle.id).toBe(testVehicle.id);
+  });
+
   //
   // it('should be able to get a vehicle by VIN', () => {
   //   service.addSubmission(convertVehicle(testVehicle));
