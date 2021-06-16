@@ -15,9 +15,7 @@ describe('VehicleDetailsComponent', () => {
   let htmlElement: any;
   const htmlIds = [
     '#vehicle-images',
-    '#make',
-    '#model',
-    '#year',
+    '#year-make-model',
     '#vin',
     '#miles',
     '#color',
