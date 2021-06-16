@@ -13,7 +13,9 @@ export default class Vehicle {
   userId: number;
   status: statusCode;
 
-  constructor() {}
+  constructor() {
+    this.vehicleImages = [];
+  }
 
   public changePrice(newPrice: number): void {
     this.sellingPrice = newPrice;

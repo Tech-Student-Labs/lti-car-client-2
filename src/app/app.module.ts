@@ -9,6 +9,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/signup/signup.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { VehicleDetailsComponent } from './modules/profile/components/vehicle-details/vehicle-details.component';
 
@@ -23,6 +24,7 @@ export function tokenGetter() {
     AboutUsComponent,
     LoginComponent,
     VehicleDetailsComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,

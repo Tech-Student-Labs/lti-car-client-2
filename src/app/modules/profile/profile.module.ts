@@ -4,6 +4,7 @@ import { ProfileComponent } from 'src/app/modules/profile/components/profile/pro
 import { SubmissionFormComponent } from 'src/app/modules/profile/components/submission-form/submission-form.component';
 import { SubmissionHistoryComponent } from 'src/app/modules/profile/components/submission-history/submission-history.component';
 import { SubmissionHistoryVehicleComponent } from 'src/app/modules/profile/components/submission-history-vehicle/submission-history-vehicle.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { SubmissionHistoryVehicleComponent } from 'src/app/modules/profile/compo
     SubmissionHistoryComponent,
     SubmissionHistoryVehicleComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
 })
 export class ProfileModule {}

@@ -1,0 +1,25 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+  
+      <!-- title -->
+      <div class="fadeIn first">
+       <h1>Sus User Sign-up</h1>
+      </div>
+  
+      <!-- Login Form -->
+      <form [formGroup]="signupForm"  (ngSubmit)="onSubmit(signupForm)">
+        <input type="text" class="fadeIn second" id="Username" name="username" formControlName="userName" placeholder="Username" required>
+        <input type="password" id="Password" class="fadeIn third" name="password" formControlName="Password" placeholder="Password" required>
+        <input type="password" id="PasswordConfirm" class="fadeIn third" formControlName="PasswordConfirm" placeholder="Password" required>
+        <input type="text" id="Name" class="fadeIn third" formControlName="Name" placeholder="Your Full Name" required>
+        <input type="text" id="Email" class="fadeIn fourth" formControlName="Email" placeholder="Email" required>
+        <button [disabled]="!signupForm.valid" class="btn btn-primary btn-rounded fadeIn fith" (ngSubmit)="onSubmit(signupForm)" id ="submit" type="submit" >Create Account</button>
+      </form>
+      
+      <!-- Create an Account rout -->
+      <div id="formFooter">
+        
+      </div>
+  
+    </div>
+  </div>
