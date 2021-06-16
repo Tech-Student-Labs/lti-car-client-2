@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Vehicle from '../../../../models/vehicle';
+import { VehicleSubmissionService } from '../../services/vehicle-submission.service';
+import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
+import { errors } from 'puppeteer';
+import VehicleImage from '../../../../models/vehicle-image';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-submission-form',
@@ -6,7 +13,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./submission-form.component.css'],
 })
 export class SubmissionFormComponent implements OnInit {
-  constructor() {}
+  submissionForm: FormGroup;
+  vehicle: Vehicle;
 
-  ngOnInit(): void {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private submissionService: VehicleSubmissionService,
+    private router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    this.submissionForm = this.formBuilder.group({
+      make: ['', Validators.required],
+      model: ['', Validators.required],
+      year: ['', Validators.required],
+      vin: ['', Validators.required],
+      miles: ['', Validators.required],
+      color: ['', Validators.required],
+      images: ['', Validators.required],
+      price: ['', Validators.required],
+    });
+    this.vehicle = new Vehicle();
+  }
+
+  public onSubmit(form: any): boolean {
+    if (form.valid === false) {
+      alert('Please fill out all vehicle information.');
+      return false;
+    }
+    const formData = form.value;
+    this.vehicle.make = formData.make;
+    this.vehicle.model = formData.model;
+    this.vehicle.year = +formData.year;
+    this.vehicle.vin = formData.vin;
+    this.vehicle.miles = +formData.miles;
+    this.vehicle.color = formData.color;
+    this.vehicle.sellingPrice = +formData.price;
+    // TODO: set this to get tje actual user id
+    this.vehicle.userId = 1;
+    const redirectUri = this.submissionService.addSubmission(
+      this.vehicle,
+    );
+
+    // TODO: redirect to the newly created vehicle:
+    form.reset(); // reset form
+    this.router.navigate([redirectUri]);
+    return true;
+  }
+
+  processImages = (imagesInput: FileList) => {
+    this.vehicle.vehicleImages = [];
+    Array.from(imagesInput).forEach((file) => {
+      const vehicleImage = new VehicleImage();
+      this.submissionService
+        .imageToBase64(file)
+        .then((data: string) => {
+          vehicleImage.imageData = data;
+          this.vehicle.vehicleImages.push(vehicleImage);
+        });
+    });
+  };
 }
