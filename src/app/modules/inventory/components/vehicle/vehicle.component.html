@@ -1,19 +1,37 @@
-<div class="card">
-  <img
-    class="card-img-top"
-    src="../../../assets/datsun510.jpg"
-    alt="Card image cap"
-  />
-  <h5 class="card-title">
-    {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
-  </h5>
-  <div class="card-body">
-    <p class="card-text">
-      Current price: {{ vehicle.sellingPrice }}
-      <br />
-      Miles: {{ vehicle.miles }}
-      <br />
-      Color: {{ vehicle.color }}
-    </p>
+<div class="col-sm-3">
+  <div class="custom-card card sm-3 shadow-sm">
+    
+    <div class="img-container">
+      <img
+        id="image"
+        *ngIf='vehicle.vehicleImages.length == 0; else loadImage'
+        class='card-img-top'
+        src='../../../assets/datsun510.jpg'
+        alt='Card image cap'
+      />
+    </div>
+
+    <ng-template #loadImage>
+      <img 
+        id="image"
+        src='{{ vehicle.vehicleImages[0].imageData }}'
+        class='card-img-top'
+        alt='{{vehicle.make}} {{vehicle.model}}'>
+    </ng-template>
+
+    <h5 id="vehicle-type" class='card-title'>
+      {{ vehicle.year }} {{ vehicle.make }} {{ vehicle.model }}
+    </h5>
+    <div class='card-body'>
+      <p id="vehicle-info" class='card-text'>
+        <!--  Need to get the inventory price, not selling price    -->
+        Current price: {{ inventoryVehicle.price }}
+        <br />
+        Miles: {{ vehicle.miles }}
+        <br />
+        Color: {{ vehicle.color }}
+      </p>
+    </div>
+
   </div>
 </div>

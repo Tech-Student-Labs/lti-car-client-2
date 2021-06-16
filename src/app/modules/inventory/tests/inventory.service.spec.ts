@@ -1,33 +1,20 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { InventoryService } from '../services/inventory.service';
 import { HttpClient } from '@angular/common/http';
-import vehicles from '../../../tests/data/vehicles.json';
+import inventoryvehicles from '../../../tests/data/inventoryvehicles.json';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import Vehicle, { convertVehicle } from '../../../models/vehicle';
+import InventoryVehicle, {
+  convertInventoryVehicle,
+} from '../../../models/inventory-vehicle';
 import { of } from 'rxjs';
 import { InventoryServiceAbstract } from '../services/InventoryAbstract';
-
-const TOYOTA_VIN = '123';
-
-const TEST_VEHICLE_JSON = {
-  make: 'AMONG',
-  model: 'US',
-  year: 2004,
-  miles: 220,
-  color: 'sus',
-  images: ['vent'],
-  vin: '666',
-  offerPrice: 123,
-  sellingPrice: 124,
-  seller: 1,
-};
 
 describe('InventoryService', () => {
   let service: InventoryService;
   let httpService: HttpClient;
 
-  const mockVehicles: Vehicle[] = vehicles.map((v) =>
-    convertVehicle(v),
+  const mockVehicles: InventoryVehicle[] = inventoryvehicles.map(
+    (v) => convertInventoryVehicle(v),
   );
 
   beforeEach(() => {
@@ -43,7 +30,13 @@ describe('InventoryService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('httpget the mock vehicles should be functional', () => {
+  it('service should have an endpoint that points towards inventory', () => {
+    expect(
+      service.endpoint.substring(service.endpoint.length - 9),
+    ).toEqual('Inventory');
+  });
+
+  it('getAllVehicles should return all the inventory vehicles from the API', () => {
     spyOn(httpService, 'get').and.returnValue(of(mockVehicles));
     service.getAllVehicles().subscribe((data) => {
       expect(data).toEqual(mockVehicles);

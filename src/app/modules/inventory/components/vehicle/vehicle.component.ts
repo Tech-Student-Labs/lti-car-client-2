@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import InventoryVehicle from '../../../../models/inventory-vehicle';
 import Vehicle from '../../../../models/vehicle';
 
 @Component({
@@ -7,9 +8,14 @@ import Vehicle from '../../../../models/vehicle';
   styleUrls: ['./vehicle.component.css'],
 })
 export class VehicleComponent implements OnInit {
-  @Input() vehicle: Vehicle;
+  @Input() inventoryVehicle: InventoryVehicle;
+  vehicle: Vehicle;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.inventoryVehicle != null) {
+      this.vehicle = this.inventoryVehicle.vehicle;
+    }
+  }
 }
