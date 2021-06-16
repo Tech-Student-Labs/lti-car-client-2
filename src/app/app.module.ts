@@ -9,11 +9,13 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/signup/signup.component';
 import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
   return localStorage.getItem("jwt");
 }
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ export function tokenGetter() {
     NavbarComponent,
     AboutUsComponent,
     LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
