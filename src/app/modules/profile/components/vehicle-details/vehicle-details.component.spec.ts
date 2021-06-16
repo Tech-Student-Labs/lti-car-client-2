@@ -44,7 +44,10 @@ describe('VehicleDetailsComponent', () => {
 
   it('should render all html elements', () => {
     htmlIds.forEach((id) =>
-      expect(htmlElement.querySelector(id).toBeTruthy()),
-    );
+      expect(htmlElement.querySelector(id)).toBeTruthy());
+  });
+
+  it("asd", () => {
+    component.id
   });
 });

@@ -47,4 +47,13 @@ export class VehicleSubmissionService {
   getAll(): Observable<Submission[]> {
     return of(this.vehicleSubmissions);
   }
+
+
+  getByID(id: string): Observable<Submission> {
+    return of(
+      this.vehicleSubmissions.find((element) => {
+        // return element.vehicle.id === id;
+      }),
+    );
+  }
 }
