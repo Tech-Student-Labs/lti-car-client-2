@@ -1,6 +1,6 @@
 <div class="col-sm-3">
   <div class="custom-card card sm-3 shadow-sm">
-    
+
     <div class="img-container">
       <img
         id="image"
@@ -11,8 +11,8 @@
       />
     </div>
 
-    <ng-template #loadImage>
-      <img 
+    <ng-template class='img-container' #loadImage>
+      <img
         id="image"
         src='{{ vehicle.vehicleImages[0].imageData }}'
         class='card-img-top'
@@ -32,6 +32,6 @@
         Color: {{ vehicle.color }}
       </p>
     </div>
-
+    <a routerLink='/vehicle/{{vehicle.id}}' class='stretched-link'></a>
   </div>
 </div>

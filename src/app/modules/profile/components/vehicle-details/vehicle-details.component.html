@@ -1,0 +1,44 @@
+<div *ngIf='vehicle != null'>
+  <div class='vehicle-container'>
+    <!--  Carousel   -->
+    <div id='vehicle-carousel' class='carousel slide w-50' data-bs-ride='carousel'>
+      <div id='vehicle-images' class='carousel-inner w-50'>
+        <div *ngIf='vehicle.vehicleImages.length == 0; else loadimages' class='carousel-item active'>
+          <img class='w-100 d-block' src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' alt='Vehicle Image' />
+        </div>
+        <ng-template #loadimages>
+          <div *ngFor='let img of vehicle.vehicleImages' class='carousel-item active'>
+            <img class='d-block w-50' id='{{img.imageData}}' src='{{img.imageData}}'
+                 alt='{{img.id}}'>
+          </div>
+        </ng-template>
+      </div>
+
+      <button class='carousel-control-prev' type='button' data-bs-target='#vehicle-carousel' data-bs-slide='prev'>
+        <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+        <span class='visually-hidden'>Previous</span>
+      </button>
+      <button class='carousel-control-next' type='button' data-bs-target='#vehicle-carousel' data-bs-slide='next'>
+        <span class='carousel-control-next-icon' aria-hidden='true'></span>
+        <span class='visually-hidden'>Next</span>
+      </button>
+
+
+    </div>
+
+    <div id='year-make-model' class='vehicle-title'>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
+    <div class='vehicle-price'>
+      <p id='price'>MSRP: {{vehicle.sellingPrice}}</p>
+    </div>
+    <div class='vehicle-info-container'>
+      <div class='vehicle-info'>
+        <h3>Basic Information</h3>
+
+      </div>
+
+    </div>
+    <p id='vin'>VIN: {{vehicle.vin}}</p>
+    <p id='miles'>Miles: {{vehicle.miles}}</p>
+    <p id='color'>Color: {{vehicle.color}}</p>
+    <p id='owner'>Owner: {{vehicle.userId}}</p>
+    <p id='status'>Status: {{vehicle.status}}</p>
