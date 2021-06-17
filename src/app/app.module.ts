@@ -11,10 +11,10 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { VehicleDetailsComponent } from './modules/profile/components/vehicle-details/vehicle-details.component';
 export function tokenGetter() {
-  return localStorage.getItem("jwt");
+  return localStorage.getItem('jwt');
 }
-
 
 @NgModule({
   declarations: [
@@ -22,6 +22,7 @@ export function tokenGetter() {
     NavbarComponent,
     AboutUsComponent,
     LoginComponent,
+    VehicleDetailsComponent,
     SignupComponent,
   ],
   imports: [
@@ -30,10 +31,9 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:5000',
-                         'localhost:5001'],
-        disallowedRoutes: []
-      }
+        allowedDomains: ['localhost:5000', 'localhost:5001'],
+        disallowedRoutes: [],
+      },
     }),
     InventoryModule,
     ProfileModule,

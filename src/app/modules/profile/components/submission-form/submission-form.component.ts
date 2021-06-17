@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Vehicle from '../../../../models/vehicle';
-import { VehicleSubmissionService } from '../../services/vehicle-submission.service';
+import { VehicleService } from '../../services/vehicle-service';
 import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
 import { errors } from 'puppeteer';
 import VehicleImage from '../../../../models/vehicle-image';
@@ -18,7 +18,7 @@ export class SubmissionFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private submissionService: VehicleSubmissionService,
+    private submissionService: VehicleService,
     private router: Router,
   ) {}
 
