@@ -78,7 +78,9 @@ html {
     border-bottom: 2px solid #5fbae9;
   }
   
-  
+  #errorMsg{
+    color: red;
+  }
   
   /* FORM TYPOGRAPHY*/
   

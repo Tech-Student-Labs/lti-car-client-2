@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -27,10 +28,11 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['',Validators.required]
     });
+    document.getElementById("errorMsg").style.display = "none" 
   }
   onSubmit(form: FormGroup): void {
     // this.submitted = true;
-
+    document.getElementById("errorMsg").style.display = "block";
     if (form.invalid) return;
     // this.loading = true;
     this.login(form);
@@ -49,6 +51,7 @@ export class LoginComponent implements OnInit {
       // this.invalidLogin = false;
       this.router.navigate(["/"]);
     }, err => {
+      document.getElementById("errorMsg").style.display = "block";
       // this.invalidLogin = true;
     });
   }
