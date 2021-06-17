@@ -5,7 +5,7 @@ import Vehicle, { convertVehicle } from '../../../models/vehicle';
 import testVehicles from '../../../tests/data/vehicles.json';
 import { Status } from '../../../models/submission';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
 
 describe('VehicleSubmissionService', () => {
@@ -26,10 +26,15 @@ describe('VehicleSubmissionService', () => {
   });
 
   it('should be able to submit vehicle', () => {
-    spyOn(http, 'post').and.returnValue(of(testVehicle));
-    expect(
-      service.addSubmission(convertVehicle(testVehicle)),
-    ).toBeTruthy();
+    spyOn(http, 'post').and.returnValue(
+      of({
+        body: testVehicle,
+        headers: new HttpHeaders(),
+      }),
+    );
+    expect(service.addSubmission(convertVehicle(testVehicle))).toBe(
+      '/submission',
+    );
   });
 
   it('should be able to get a vehicle by id', () => {
