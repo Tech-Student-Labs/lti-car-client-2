@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class VehicleSubmissionService {
+export class VehicleService {
   endpoint = 'https://localhost:5001/Vehicle';
 
   constructor(private http: HttpClient) {}
@@ -24,9 +24,12 @@ export class VehicleSubmissionService {
       })
       .subscribe(
         (response) => {
-          const redirectUri: string = response.headers.get(
-            'location',
-          );
+          let redirectUri: string;
+          if (typeof response.headers !== 'undefined') {
+            redirectUri = response.headers.get('location');
+          } else {
+            redirectUri = '/submission';
+          }
           // TODO: remove this, and just redirect
           alert('Vehicle successfully submitted!');
           return redirectUri;
@@ -54,37 +57,3 @@ export class VehicleSubmissionService {
       reader.onerror = (error) => reject(error);
     });
 }
-
-// getByUser(userId: number): Observable<Submission[]> {
-//   return of(
-//     this.vehicleSubmissions.filter((element) => {
-//       return element.vehicle.userId === userId;
-//     }),
-//   );
-// }
-//
-// getByVIN(vin: string): Observable<Submission> {
-//   return of(
-//     this.vehicleSubmissions.find((element) => {
-//       return element.vehicle.vin === vin;
-//     }),
-//   );
-// }
-//
-// removeSubmission(vin: string): void {
-//   this.vehicleSubmissions = this.vehicleSubmissions.filter(
-//     (element) => {
-//       return element.vehicle.vin !== vin;
-//     },
-//   );
-// }
-//
-// updateStatus(vin: string, status: number): void {
-//   this.getByVIN(vin).subscribe((data) => {
-//     data.status = status;
-//   });
-// }
-//
-// getAll(): Observable<Submission[]> {
-//   return of(this.vehicleSubmissions);
-// }

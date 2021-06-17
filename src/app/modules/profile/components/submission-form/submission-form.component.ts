@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Vehicle from '../../../../models/vehicle';
-import { VehicleSubmissionService } from '../../services/vehicle-submission.service';
-import { resolve } from '@angular/compiler-cli/src/ngtsc/file_system';
-import { errors } from 'puppeteer';
+import { VehicleService } from '../../services/vehicle-service';
 import VehicleImage from '../../../../models/vehicle-image';
 import { Router } from '@angular/router';
 
@@ -18,7 +16,7 @@ export class SubmissionFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private submissionService: VehicleSubmissionService,
+    private submissionService: VehicleService,
     private router: Router,
   ) {}
 
@@ -49,15 +47,19 @@ export class SubmissionFormComponent implements OnInit {
     this.vehicle.miles = +formData.miles;
     this.vehicle.color = formData.color;
     this.vehicle.sellingPrice = +formData.price;
-    // TODO: set this to get tje actual user id
-    this.vehicle.userId = 1;
     const redirectUri = this.submissionService.addSubmission(
       this.vehicle,
     );
 
     // TODO: redirect to the newly created vehicle:
-    form.reset(); // reset form
-    this.router.navigate([redirectUri]);
+    // reset form
+    this.router.navigate([redirectUri]).then((redirect) => {
+      if (redirect === true) {
+        // pass
+      } else {
+        form.reset();
+      }
+    });
     return true;
   }
 

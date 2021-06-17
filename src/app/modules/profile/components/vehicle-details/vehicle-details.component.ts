@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { VehicleSubmissionService } from '../../services/vehicle-submission.service';
+import { VehicleService } from '../../services/vehicle-service';
 import Vehicle from '../../../../models/vehicle';
 import { tap } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ export class VehicleDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private vehicleService: VehicleSubmissionService,
+    private vehicleService: VehicleService,
   ) {}
 
   ngOnInit(): void {
