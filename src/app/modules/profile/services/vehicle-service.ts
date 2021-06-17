@@ -4,12 +4,12 @@ import { Observable, of } from 'rxjs';
 import Submission from '../../../models/submission';
 import VehicleImage from '../../../models/vehicle-image';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
-export class VehicleSubmissionService {
-  vehicleSubmissions: Submission[] = [];
+export class VehicleService {
   endpoint = 'https://localhost:5001/Vehicle';
 
   constructor(private http: HttpClient) {}
@@ -38,38 +38,12 @@ export class VehicleSubmissionService {
     return '/submission';
   }
 
-  getByUser(userId: number): Observable<Submission[]> {
-    return of(
-      this.vehicleSubmissions.filter((element) => {
-        return element.vehicle.userId === userId;
+  getByID(id: number): Observable<Vehicle> {
+    return this.http.get<Vehicle>(this.endpoint + '/' + id, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
       }),
-    );
-  }
-
-  getByVIN(vin: string): Observable<Submission> {
-    return of(
-      this.vehicleSubmissions.find((element) => {
-        return element.vehicle.vin === vin;
-      }),
-    );
-  }
-
-  removeSubmission(vin: string): void {
-    this.vehicleSubmissions = this.vehicleSubmissions.filter(
-      (element) => {
-        return element.vehicle.vin !== vin;
-      },
-    );
-  }
-
-  updateStatus(vin: string, status: number): void {
-    this.getByVIN(vin).subscribe((data) => {
-      data.status = status;
     });
-  }
-
-  getAll(): Observable<Submission[]> {
-    return of(this.vehicleSubmissions);
   }
 
   imageToBase64 = (file: File) =>

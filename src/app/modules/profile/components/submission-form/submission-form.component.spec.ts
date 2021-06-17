@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubmissionFormComponent } from './submission-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VehicleSubmissionService } from '../../services/vehicle-submission.service';
+import { VehicleService } from '../../services/vehicle-service';
 import { InventoryService } from '../../../inventory/services/inventory.service';
 import { InventoryServiceAbstract } from '../../../inventory/services/InventoryAbstract';
 import { RouterModule } from '@angular/router';
@@ -34,7 +34,7 @@ describe('SubmissionFormComponent', () => {
         HttpClientTestingModule,
       ],
       declarations: [SubmissionFormComponent],
-      providers: [{ provide: VehicleSubmissionService }],
+      providers: [{ provide: VehicleService }],
     }).compileComponents();
   });
 

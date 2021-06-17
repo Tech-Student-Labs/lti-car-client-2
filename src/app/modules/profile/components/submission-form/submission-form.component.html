@@ -3,7 +3,7 @@
     <h2>Submit a Vehicle</h2>
   </div>
   <form [formGroup]="submissionForm" (ngSubmit)="onSubmit(submissionForm)">
-    <input class="mb-3 form-control"type="text" id="make-submission" name="Make:" formControlName="make" placeholder="Make" required>
+    <input #make class="mb-3 form-control"type="text" id="make-submission" name="Make:" formControlName="make" placeholder="Make" required>
     <input class="mb-3 form-control" type='text' id='model-submission' name='Model:' formControlName='model' placeholder='Model' required>
     <input class="mb-3 form-control" type='text' id='year-submission' name='Year:' formControlName='year' placeholder='Year' required>
     <input class="mb-3 form-control" type='text' id='vin-submission' name='VIN:' formControlName='vin' placeholder='VIN' required>
