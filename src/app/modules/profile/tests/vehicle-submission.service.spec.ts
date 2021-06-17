@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VehicleSubmissionService } from '../services/vehicle-submission.service';
+import { VehicleService } from '../services/vehicle-service';
 import Vehicle, { convertVehicle } from '../../../models/vehicle';
 import testVehicles from '../../../tests/data/vehicles.json';
 import { Status } from '../../../models/submission';
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 
 describe('VehicleSubmissionService', () => {
-  let service: VehicleSubmissionService;
+  let service: VehicleService;
   const testVehicle = testVehicles[0];
   let http: HttpClient;
 
@@ -17,7 +17,7 @@ describe('VehicleSubmissionService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(VehicleSubmissionService);
+    service = TestBed.inject(VehicleService);
     http = TestBed.inject(HttpClient);
   });
 
