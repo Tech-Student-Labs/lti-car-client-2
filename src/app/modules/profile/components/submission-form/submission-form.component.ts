@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class SubmissionFormComponent implements OnInit {
   submissionForm: FormGroup;
   vehicle: Vehicle;
+  loading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,7 @@ export class SubmissionFormComponent implements OnInit {
       price: ['', Validators.required],
     });
     this.vehicle = new Vehicle();
+    this.loading = false;
   }
 
   public onSubmit(form: any): boolean {
@@ -39,6 +41,7 @@ export class SubmissionFormComponent implements OnInit {
       alert('Please fill out all vehicle information.');
       return false;
     }
+    this.loading = true;
     const formData = form.value;
     this.vehicle.make = formData.make;
     this.vehicle.model = formData.model;
@@ -50,13 +53,11 @@ export class SubmissionFormComponent implements OnInit {
     const redirectUri = this.submissionService.addSubmission(
       this.vehicle,
     );
-
-    // TODO: redirect to the newly created vehicle:
-    // reset form
     this.router.navigate([redirectUri]).then((redirect) => {
       if (redirect === true) {
         // pass
       } else {
+        this.loading = false;
         form.reset();
       }
     });
