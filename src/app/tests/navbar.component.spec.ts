@@ -7,7 +7,7 @@ import {
 import { Route, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes } from 'src/app/app-routing.module';
-import { NavbarComponent } from './navbar.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 import { Location } from '@angular/common';
 
 describe('NavbarComponent', () => {
