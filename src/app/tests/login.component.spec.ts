@@ -41,12 +41,15 @@ describe('LoginComponent', () => {
     passwordField.setValue('EpicPasswordFortnite');
     const errors = passwordField.errors || {};
     //There is no errors so errors is undefined
-    expect(errors.minlength).toBeUndefined();
+    expect(errors.valid).toBeUndefined();
   });
   it('should have a username field with valid field', () => {
     const userField = component.loginForm.controls.userName;
     userField.setValue('ForniteGamer001');
     const errors = userField.errors || {};
-    expect(errors.minlength).toBeUndefined();
+    expect(errors.valid).toBeUndefined();
   });
+  it('should not display errorMsg', () => {
+    expect(element.querySelector('#errorMsg').display).toBeFalsy();
+  })
 });

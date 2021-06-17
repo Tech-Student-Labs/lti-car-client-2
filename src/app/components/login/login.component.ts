@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
       // this.invalidLogin = false;
       this.router.navigate(["/"]);
     }, err => {
-      document.getElementById("errorMsg").style.display = "block";
       // this.invalidLogin = true;
     });
   }
