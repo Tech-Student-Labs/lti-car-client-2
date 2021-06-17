@@ -1,5 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, Form } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +10,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  router: Router;
+  http: HttpClient;
+
+  constructor(private fb: FormBuilder, _http: HttpClient, _router: Router) {
+    this.http = _http;
+    this.router = _router;
+  }
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -21,7 +29,27 @@ export class SignupComponent implements OnInit {
     );
   }
   onSubmit(form: FormGroup){
-    alert('User has logged in');
+    // alert('User has logged in');
+    if (form.invalid) return;
+    this.register(form);
+  }
+
+  register(form: FormGroup): void {
+    const userData = JSON.stringify(form.value);
+    this.http.post("https://localhost:5001/User", userData, {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+      })})
+      .subscribe(response => {
+        const token = (<any>response).token;
+        // localStorage.setItem("jwt", token);
+        // console.log(token);
+        // this.invalidLogin = false;
+        this.router.navigate(["/"]);
+      }, err => {
+        // this.invalidLogin = true;
+      }
+    );
   }
 
   comparePasswords(fb:FormGroup){

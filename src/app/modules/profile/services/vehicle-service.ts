@@ -24,9 +24,12 @@ export class VehicleService {
       })
       .subscribe(
         (response) => {
-          const redirectUri: string = response.headers.get(
-            'location',
-          );
+          let redirectUri: string;
+          if (typeof response.headers !== 'undefined') {
+            redirectUri = response.headers.get('location');
+          } else {
+            redirectUri = '/submission';
+          }
           // TODO: remove this, and just redirect
           alert('Vehicle successfully submitted!');
           return redirectUri;
