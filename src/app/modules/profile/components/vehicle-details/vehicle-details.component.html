@@ -2,14 +2,22 @@
   <div class='vehicle-container'>
     <!--  Carousel   -->
     <div id='vehicle-carousel w-50' class='carousel slide' data-bs-ride='carousel'>
-      <div id='vehicle-images' class='carousel-inner w-50'>
+      <div id='vehicle-image-container' class='carousel-inner w-50'>
         <div *ngIf='vehicle.vehicleImages.length == 0; else loadimages' class='carousel-item active'>
-          <img class='w-100 d-block' src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' alt='Vehicle Image' />
+          <img 
+            class='d-block w-100' 
+            src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' 
+            alt='Vehicle Image' />
         </div>
         <ng-template #loadimages>
           <div *ngFor='let img of vehicle.vehicleImages' class='carousel-item active'>
-            <img class='d-block w-50' id='{{img.imageData}}' src='{{img.imageData}}'
-                 alt='{{img.id}}'>
+            <div>
+            <img 
+              class='d-block w-100' 
+              id='{{img.id}}' 
+              src='{{img.imageData}}'
+              alt='{{img.id}}' />
+            </div>
           </div>
         </ng-template>
       </div>
@@ -26,19 +34,31 @@
 
     </div>
 
-    <div id='year-make-model' class='vehicle-title'>{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</div>
+    <div id='year-make-model' class='vehicle-title'>
+      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+    </div>
     <div class='vehicle-price'>
       <p id='price'>MSRP: {{vehicle.sellingPrice}}</p>
     </div>
     <div class='vehicle-info-container'>
       <div class='vehicle-info'>
         <h3>Basic Information</h3>
-
+        <p id='vin'><strong>VIN:</strong> {{vehicle.vin}}</p>
+        <p id='miles'><strong>Miles:</strong> {{vehicle.miles}}</p>
+        <p id='color'><strong>Color:</strong> {{vehicle.color}}</p>
+        <p id='owner'><strong>Owner:</strong> {{vehicle.userId}}</p>
+        <p id='status'><strong>Status:</strong> {{vehicle.status}}</p>
       </div>
-
     </div>
-    <p id='vin'>VIN: {{vehicle.vin}}</p>
-    <p id='miles'>Miles: {{vehicle.miles}}</p>
-    <p id='color'>Color: {{vehicle.color}}</p>
-    <p id='owner'>Owner: {{vehicle.userId}}</p>
-    <p id='status'>Status: {{vehicle.status}}</p>
+
+    <div *ngFor="let img of vehicle.vehicleImages">
+      <div>
+        <img class="image" src="{{img.imageData}}"/>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
