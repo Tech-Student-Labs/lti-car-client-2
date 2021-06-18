@@ -13,5 +13,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = tokenGetter();
+
+    setInterval(() => {
+      this.token = tokenGetter();
+    }, 5000);
   }
 }
