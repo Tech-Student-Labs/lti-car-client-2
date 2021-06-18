@@ -74,12 +74,20 @@ export class SubmissionFormComponent implements OnInit {
 
     if (+formData.year > this.getMaxYear() || +formData < 1940) {
       alert(`Year must be between 1940 and ${this.getMaxYear()}`);
+      this.loading = false;
       return false;
     }
 
     this.vehicle.year = +formData.year;
 
     this.vehicle.vin = formData.vin;
+
+    if (+formData.miles > 500000) {
+      alert('Miles cannot exceed 500,000');
+      this.loading = false;
+      return false;
+    }
+
     this.vehicle.miles = +formData.miles;
     this.vehicle.color = formData.color;
     this.vehicle.sellingPrice = +formData.price;
