@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { tokenGetter } from 'src/app/app.module';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  token: String;
   constructor() {}
 
-  ngOnInit(): void {}
+  tokenGetter() {
+    return localStorage.getItem('jwt');
+  }
+
+  ngOnInit(): void {
+    this.token = this.tokenGetter();
+
+    setInterval(() => {
+      this.token = this.tokenGetter();
+    }, 5000);
+  }
 }

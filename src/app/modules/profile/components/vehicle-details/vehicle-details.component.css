@@ -63,6 +63,15 @@
   margin: auto;
 }
 
+h3 {
+  font-size: 2em;
+}
+
+.img {
+  height: 200px;
+  width: 50%;
+}
+
 .listed-image-container {
   margin: 1rem;
   text-align: center;

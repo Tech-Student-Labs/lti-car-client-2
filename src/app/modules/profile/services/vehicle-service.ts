@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class VehicleService {
-  endpoint = 'https://localhost:5001/Vehicle';
+  endpoint = 'http://localhost:5000/Vehicle';
 
   constructor(private http: HttpClient) {}
 

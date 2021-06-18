@@ -15,7 +15,7 @@ import { VehicleDetailsComponent } from './modules/profile/components/vehicle-de
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
 
-export function tokenGetter() {
+function tokenGetter() {
   return localStorage.getItem('jwt');
 }
 
