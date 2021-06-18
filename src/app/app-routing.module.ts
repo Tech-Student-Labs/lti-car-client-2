@@ -7,6 +7,7 @@ import { VehicleListComponent } from './modules/inventory/components/vehicle-lis
 import { ProfileComponent } from './modules/profile/components/profile/profile.component';
 import { SubmissionFormComponent } from './modules/profile/components/submission-form/submission-form.component';
 import { VehicleDetailsComponent } from './modules/profile/components/vehicle-details/vehicle-details.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 export const routes: Routes = [
   { path: '', component: VehicleListComponent },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'vehicle/:id', component: VehicleDetailsComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'contact', component: ContactComponent },
 ];
 
 @NgModule({

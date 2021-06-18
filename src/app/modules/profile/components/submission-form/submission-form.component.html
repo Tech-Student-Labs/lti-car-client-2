@@ -1,92 +1,25 @@
 <div class="container">
-  <div class="heading center">
-    <h2>Submit a Vehicle</h2>
+  <div class="heading">
+
   </div>
-  <form
-    [formGroup]="submissionForm"
-    (ngSubmit)="onSubmit(submissionForm)"
-  >
-    <input
-      #make
-      class="mb-3 form-control"
-      type="text"
-      id="make-submission"
-      name="Make:"
-      formControlName="make"
-      placeholder="Make"
-      required
-    />
-    <input
-      class="mb-3 form-control"
-      type="text"
-      id="model-submission"
-      name="Model:"
-      formControlName="model"
-      placeholder="Model"
-      required
-    />
-    <input
-      class="mb-3 form-control"
-      type="text"
-      id="year-submission"
-      name="Year:"
-      formControlName="year"
-      placeholder="Year"
-      required
-    />
-    <input
-      class="mb-3 form-control"
-      type="text"
-      id="vin-submission"
-      name="VIN:"
-      formControlName="vin"
-      placeholder="VIN"
-      required
-    />
-    <input
-      class="mb-3 form-control"
-      type="text"
-      id="miles-submission"
-      name="Miles:"
-      formControlName="miles"
-      placeholder="Miles"
-      required
-    />
-    <input
-      class="mb-3 form-control"
-      type="text"
-      id="color-submission"
-      name="Color:"
-      formControlName="color"
-      placeholder="Color"
-      required
-    />
-    <input
-      #images
-      (change)="processImages(images.files)"
-      class="mb-3 form-control"
-      type="file"
-      id="images-submission"
-      name="Vehicle photos:"
-      formControlName="images"
-      accept="image/*"
-      multiple
-    />
-    <input
-      class="mb-3 form-control"
-      type="text"
-      id="price-submission"
-      name="Price:"
-      formControlName="price"
-      placeholder="Price"
-      required
-    />
-    <button
-      class="btn btn-primary btn-rounded fadeIn fourth"
-      id="submit-submission"
-      type="submit"
-    >
-      Submit
-    </button>
-  </form>
+  <div align='center'>
+    <h2 class='display-5'>Submit a Vehicle</h2>
+    <br>
+    <form class='center' [formGroup]="submissionForm" (ngSubmit)="onSubmit(submissionForm)" >
+      <input #make class="mb-3 form-control"type="text" id="make-submission" name="Make:" formControlName="make" placeholder="Make" required>
+      <input class="mb-3 form-control" type='text' id='model-submission' name='Model:' formControlName='model' placeholder='Model' required>
+      <input class="mb-3 form-control" type='number' min='1920' max='{{getMaxYear()}}}' id='year-submission' name='Year:' formControlName='year' placeholder='Year (1940-{{getMaxYear()}})' required>
+      <input class="mb-3 form-control" type='text' id='vin-submission' name='VIN:' formControlName='vin' placeholder='VIN' required>
+      <input class="mb-3 form-control" type='number' min='0' id='miles-submission' name='Miles:' formControlName='miles' placeholder='Miles' required>
+      <input class="mb-3 form-control" type='text' id='color-submission' name='Color:' formControlName='color' placeholder='Color' required>
+      <input class="mb-3 form-control" type='number' min='0' id='price-submission' name='Price:' formControlName='price' placeholder='Price (USD)' required>
+      <input #images (change)='processImages(images.files)' class="mb-3 form-control" type='file' id='images-submission' name='Vehicle photos:' formControlName='images' accept='image/*' multiple>
+      <br>
+      <button class="btn btn-primary btn-rounded fadeIn fourth" id ="submit-submission" type="submit">
+          <span *ngIf='loading' class="spinner-border spinner-border-sm" role="status" aria-hidden="false"></span>
+          <span *ngIf='loading'>Submitting...</span>
+          <span *ngIf='!loading'>Submit</span>
+        </button>
+    </form>
+    </div>
 </div>
