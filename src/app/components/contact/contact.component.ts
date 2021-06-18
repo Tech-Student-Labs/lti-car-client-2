@@ -11,7 +11,7 @@ export class ContactComponent implements OnInit {
   email: string;
 
   constructor() {
-    this.email = 'info@example.com';
+    this.email = 'SellUsStuffCars@email.com';
   }
 
   ngOnInit(): void {}
