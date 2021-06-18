@@ -13,6 +13,10 @@ import { Router } from '@angular/router';
 export class SubmissionFormComponent implements OnInit {
   submissionForm: FormGroup;
   vehicle: Vehicle;
+  year: HTMLElement;
+  price: HTMLElement;
+  miles: HTMLElement;
+  loading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +36,30 @@ export class SubmissionFormComponent implements OnInit {
       price: ['', Validators.required],
     });
     this.vehicle = new Vehicle();
+    this.loading = false;
+    this.year = document.getElementById('year-submission');
+    this.price = document.getElementById('price-submission');
+    this.miles = document.getElementById('miles-submission');
+
+    // Prevent minus and hyphen-minus from being used in input
+    this.year.onkeydown = (e) => {
+      if (e.key === '-' || e.key === '-') {
+        return false;
+      }
+    };
+
+    this.price.onkeydown = (e) => {
+      if (e.key === '-' || e.key === '-') {
+        return false;
+      }
+    };
+
+    // Prevent minus and hyphen-minus from being used in input
+    this.miles.onkeydown = (e) => {
+      if (e.key === '-' || e.key === '-') {
+        return false;
+      }
+    };
   }
 
   public onSubmit(form: any): boolean {
@@ -39,24 +67,38 @@ export class SubmissionFormComponent implements OnInit {
       alert('Please fill out all vehicle information.');
       return false;
     }
+    this.loading = true;
     const formData = form.value;
     this.vehicle.make = formData.make;
     this.vehicle.model = formData.model;
+
+    if (+formData.year > this.getMaxYear() || +formData < 1940) {
+      alert(`Year must be between 1940 and ${this.getMaxYear()}`);
+      this.loading = false;
+      return false;
+    }
+
     this.vehicle.year = +formData.year;
+
     this.vehicle.vin = formData.vin;
+
+    if (+formData.miles > 500000) {
+      alert('Miles cannot exceed 500,000');
+      this.loading = false;
+      return false;
+    }
+
     this.vehicle.miles = +formData.miles;
     this.vehicle.color = formData.color;
     this.vehicle.sellingPrice = +formData.price;
     const redirectUri = this.submissionService.addSubmission(
       this.vehicle,
     );
-
-    // TODO: redirect to the newly created vehicle:
-    // reset form
     this.router.navigate([redirectUri]).then((redirect) => {
       if (redirect === true) {
         // pass
       } else {
+        this.loading = false;
         form.reset();
       }
     });
@@ -75,4 +117,6 @@ export class SubmissionFormComponent implements OnInit {
         });
     });
   };
+
+  getMaxYear = () => new Date().getFullYear() + 1;
 }
