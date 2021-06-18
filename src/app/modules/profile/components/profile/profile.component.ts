@@ -13,10 +13,8 @@ export class ProfileComponent implements OnInit {
   public user: User;
 
   ngOnInit(): void {
-    this.userService.getUserProfile().subscribe((data) => {
-      // console.log(data);
+    this.userService.getUserProfile().subscribe((data) => {;
       this.user = data;
-      console.log(this.user);
     });
   }
 }
