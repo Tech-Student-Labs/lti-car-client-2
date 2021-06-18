@@ -1,45 +1,32 @@
 <div *ngIf='vehicle != null'>
   <div class='vehicle-container'>
-    <!--  Carousel   -->
-    <div id='vehicle-carousel w-50' class='carousel slide' data-bs-ride='carousel'>
-      <div id='vehicle-image-container' class='carousel-inner w-50'>
-        <div *ngIf='vehicle.vehicleImages.length == 0; else loadimages' class='carousel-item active'>
-          <img 
-            class='d-block w-100' 
-            src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' 
-            alt='Vehicle Image' />
-        </div>
-        <ng-template #loadimages>
-          <div *ngFor='let img of vehicle.vehicleImages' class='carousel-item active'>
-            <div>
-            <img 
-              class='d-block w-100' 
-              id='{{img.id}}' 
-              src='{{img.imageData}}'
-              alt='{{img.id}}' />
-            </div>
-          </div>
-        </ng-template>
+    <div class="vehicle-main-info">
+      <div class="vehicle-main-info-child" 
+        *ngIf='vehicle.vehicleImages.length == 0; else loadimages'>
+        <img 
+          class='img-thumbnail' 
+          src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' 
+          alt='Vehicle Image' />
       </div>
+      <ng-template #loadimages>
+        <div class="vehicle-main-info-child">
+        <img 
+          class='img-thumbnail'
+          src='{{vehicle.vehicleImages[0].imageData}}'
+          alt='Vehicle Image' />
+        </div>
+      </ng-template>
 
-      <button class='carousel-control-prev' type='button' data-bs-target='#vehicle-carousel' data-bs-slide='prev'>
-        <span class='carousel-control-prev-icon' aria-hidden='true'></span>
-        <span class='visually-hidden'>Previous</span>
-      </button>
-      <button class='carousel-control-next' type='button' data-bs-target='#vehicle-carousel' data-bs-slide='next'>
-        <span class='carousel-control-next-icon' aria-hidden='true'></span>
-        <span class='visually-hidden'>Next</span>
-      </button>
+      <div  class="vehicle-main-info-child">
+        <div id='year-make-model' class='vehicle-title '>
+          {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
+        </div>
+        <div class='vehicle-price'>
+          <p id='price'>MSRP: {{vehicle.sellingPrice}}</p>
+        </div>
+      </div>
+    </div> 
 
-
-    </div>
-
-    <div id='year-make-model' class='vehicle-title'>
-      {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
-    </div>
-    <div class='vehicle-price'>
-      <p id='price'>MSRP: {{vehicle.sellingPrice}}</p>
-    </div>
     <div class='vehicle-info-container'>
       <div class='vehicle-info'>
         <h3>Basic Information</h3>
@@ -51,9 +38,9 @@
       </div>
     </div>
 
-    <div *ngFor="let img of vehicle.vehicleImages">
-      <div>
-        <img class="image" src="{{img.imageData}}"/>
+    <div class="card-deck mx-auto" *ngFor="let img of vehicle.vehicleImages">
+      <div class="listed-image-container container">
+        <img class="listed-image" src="{{img.imageData}}"/>
       </div>
     </div>
 

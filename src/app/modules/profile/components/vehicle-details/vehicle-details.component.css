@@ -1,20 +1,22 @@
 .vehicle-container {
+  margin: 0 5em;
   text-align: center;
 }
 
-#vehicle-image-container {
-  height: 50vh;
-  width: 80vw;
-  margin: auto;
-  
+.vehicle-main-info-child {
+  width: 50%;
+  float: left;
+  padding: 20px;
 }
 
-#vehicle-carousel {
-  width: 200px;
-  text-align: center;
+.img-thumbnail {
+  display: inline-block;
+  height: 25em;
+  width: 25em;
 }
 
 .vehicle-title {
+  display: inline-block;
   font-size: 3em;
   font-weight: 600;
 }
@@ -24,9 +26,9 @@
   font-weight: 600;
 }
 
-/* .vehicle-info-container {
-  text-align: center;
-} */
+.vehicle-info-container {
+  display: block;
+}
 
 .vehicle-info {
   margin: auto;
@@ -34,7 +36,12 @@
   width: 20em;
 }
 
-.image {
-  max-height: 200px;
-  max-width: 200px;
+.listed-image-container {
+  display: inline-block;
+  padding: 1em;
+}
+
+.listed-image {
+  height: 10em;
+  width: 10em;
 }
