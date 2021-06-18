@@ -38,7 +38,10 @@
       </div>
     </div>
 
-    <div class="vehicle-gallery-container">
+    <div 
+      class="vehicle-gallery-container" 
+      *ngIf='vehicle.vehicleImages.length != 0; else loadNotFound'
+    >
       <h3><strong>Vehicle Gallery</strong></h3>
       <div class="row wrapper">
         <div class="container card-deck mx-auto listed-image-container">
@@ -49,6 +52,9 @@
         </div>
       </div>
     </div>
+    <ng-template class="vehicle-main-info-child" #loadNotFound>
+      
+    </ng-template>
 
   </div>
 </div>
