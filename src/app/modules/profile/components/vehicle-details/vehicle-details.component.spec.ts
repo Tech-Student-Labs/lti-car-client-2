@@ -22,6 +22,7 @@ describe('VehicleDetailsComponent', () => {
     '#price',
     '#owner',
     '#status',
+    '.vehicle-gallery-container'
   ];
 
   beforeEach(async () => {

@@ -5,12 +5,14 @@
         *ngIf='vehicle.vehicleImages.length != 0; else loadimages'>
         <img 
           class='img-thumbnail'
+          id="vehicle-images"
           src='{{vehicle.vehicleImages[0].imageData}}'
           alt='Vehicle Image' />
       </div>
       <ng-template class="vehicle-main-info-child" #loadimages>
         <img 
-          class='img-thumbnail' 
+          class='img-thumbnail'
+          id="vehicle-images"
           src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' 
           alt='Vehicle Image' />
       </ng-template>
