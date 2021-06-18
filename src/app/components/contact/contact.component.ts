@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { emit } from 'cluster';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -8,29 +9,24 @@ import { emit } from 'cluster';
 })
 export class ContactComponent implements OnInit {
   email: string;
-  subject: string;
-  body: string;
 
   constructor() {
-    this.email = 'example@lntinfotech.invalid';
+    this.email = 'info@example.com';
   }
 
   ngOnInit(): void {}
 
-  getEmailString(): string {
-    this.subject = (document.querySelector(
-      '#subject',
-    ) as HTMLInputElement).value;
-    this.body = (document.querySelector(
-      '#body',
-    ) as HTMLInputElement).value;
-    return (
+  sendEmail = (name: string, subject: string, body: string) => {
+    const emailString =
       'mailto:' +
       this.email +
-      '?Subject=' +
-      this.subject +
-      '?body=' +
-      this.body
-    );
-  }
+      '?subject=' +
+      name +
+      ' - ' +
+      subject +
+      '&body=' +
+      body;
+
+    window.location.href = emailString;
+  };
 }
