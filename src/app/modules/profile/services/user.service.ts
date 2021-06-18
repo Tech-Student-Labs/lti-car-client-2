@@ -8,7 +8,7 @@ import User from 'src/app/models/user';
 })
 export class UserService {
 
-  endpoint : string = 'http://localhost:5000/' + "/user/profile";
+  endpoint : string = 'http://localhost:5000' + "/user/profile";
 
   constructor(private http: HttpClient) {}
 

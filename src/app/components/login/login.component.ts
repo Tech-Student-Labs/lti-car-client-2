@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(form: FormGroup): void {
     // this.submitted = true;
-    document.getElementById("errorMsg").style.display = "block";
+    
     if (form.invalid) return;
     // this.loading = true;
     this.login(form);
@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["/"]);
     }, err => {
       // this.invalidLogin = true;
+      document.getElementById("errorMsg").style.display = "block";
     });
   }
 }

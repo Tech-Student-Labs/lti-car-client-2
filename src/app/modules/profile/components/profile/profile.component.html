@@ -1,6 +1,11 @@
 <div>
     <h1 id="title">Your SUS Car Profile</h1>
-    <p id="Name">NAME</p>
-    <p id="username">USERNAME</p>
-    <p id="email">EMAIL</p>
+
+    <div *ngIf="user">
+        <p id="Name">Name: {{user.name}}</p>
+        <p id="username">Username: {{user.userName}}</p>
+        <p id="email">EMAIL: {{user.email}}</p>
+    </div>
+    
+
 </div>>
