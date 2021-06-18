@@ -1,18 +1,31 @@
 .vehicle-container {
-  margin: 0 5em;
+  display: block;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  margin: 0 2em;
   text-align: center;
 }
 
+.vehicle-main-info {
+  margin-top: 2em;
+}
+
 .vehicle-main-info-child {
-  width: 50%;
-  float: left;
+  display: inline-block;
   padding: 20px;
+  width: 50%;
 }
 
 .img-thumbnail {
   display: inline-block;
-  height: 25em;
-  width: 25em;
+  height: 300px;
+  min-width: 300px;
+  width: 300px;
+}
+
+.main-info {
+  height: 21.5em;
+  text-align: left;
 }
 
 .vehicle-title {
@@ -26,22 +39,37 @@
   font-weight: 600;
 }
 
+@media screen and (max-width:800px) {
+  .vehicle-main-info-child {
+    display: block;
+  }
+}
+
 .vehicle-info-container {
-  display: block;
+  border: 2px solid rgb(202, 202, 204);
+  background-color:gainsboro;
+  border-radius: 15px;
+  margin: 2em auto;
+  
+  min-width: 15em;
+  max-width: 50em;
+  padding: 10px;
+  text-align: center;
 }
 
 .vehicle-info {
-  margin: auto;
   text-align: left;
   width: 20em;
+  margin: auto;
 }
 
 .listed-image-container {
-  display: inline-block;
-  padding: 1em;
+  margin: 1rem;
+  text-align: center;
 }
 
 .listed-image {
   height: 10em;
+  margin: 1em;
   width: 10em;
 }

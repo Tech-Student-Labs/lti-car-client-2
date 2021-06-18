@@ -2,34 +2,32 @@
   <div class='vehicle-container'>
     <div class="vehicle-main-info">
       <div class="vehicle-main-info-child" 
-        *ngIf='vehicle.vehicleImages.length == 0; else loadimages'>
-        <img 
-          class='img-thumbnail' 
-          src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' 
-          alt='Vehicle Image' />
-      </div>
-      <ng-template #loadimages>
-        <div class="vehicle-main-info-child">
+        *ngIf='vehicle.vehicleImages.length != 0; else loadimages'>
         <img 
           class='img-thumbnail'
           src='{{vehicle.vehicleImages[0].imageData}}'
           alt='Vehicle Image' />
-        </div>
+      </div>
+      <ng-template class="vehicle-main-info-child" #loadimages>
+        <img 
+          class='img-thumbnail' 
+          src='https://cdn.bootstrapstudio.io/placeholders/1400x800.png' 
+          alt='Vehicle Image' />
       </ng-template>
 
-      <div  class="vehicle-main-info-child">
+      <div  class="vehicle-main-info-child main-info">
         <div id='year-make-model' class='vehicle-title '>
           {{vehicle.year}} {{vehicle.make}} {{vehicle.model}}
         </div>
         <div class='vehicle-price'>
-          <p id='price'>MSRP: {{vehicle.sellingPrice}}</p>
+          <p id='price'>MSRP: ${{vehicle.sellingPrice}}</p>
         </div>
       </div>
     </div> 
 
     <div class='vehicle-info-container'>
       <div class='vehicle-info'>
-        <h3>Basic Information</h3>
+        <h3><strong>Basic Information</strong></h3>
         <p id='vin'><strong>VIN:</strong> {{vehicle.vin}}</p>
         <p id='miles'><strong>Miles:</strong> {{vehicle.miles}}</p>
         <p id='color'><strong>Color:</strong> {{vehicle.color}}</p>
@@ -38,12 +36,17 @@
       </div>
     </div>
 
-    <div class="card-deck mx-auto" *ngFor="let img of vehicle.vehicleImages">
-      <div class="listed-image-container container">
-        <img class="listed-image" src="{{img.imageData}}"/>
+    <div class="vehicle-gallery-container">
+      <h3><strong>Vehicle Gallery</strong></h3>
+      <div class="row wrapper">
+        <div class="container card-deck mx-auto listed-image-container">
+          <img 
+            class="listed-image" 
+            *ngFor="let img of vehicle.vehicleImages" 
+            src="{{img.imageData}}"/>
+        </div>
       </div>
     </div>
-
 
   </div>
 </div>
