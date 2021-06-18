@@ -12,7 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { VehicleDetailsComponent } from './modules/profile/components/vehicle-details/vehicle-details.component';
-export function tokenGetter() {
+
+function tokenGetter() {
   return localStorage.getItem('jwt');
 }
 
