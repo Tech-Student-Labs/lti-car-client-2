@@ -10,7 +10,7 @@ describe('ProfileComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProfileComponent],
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
@@ -26,11 +26,11 @@ describe('ProfileComponent', () => {
   });
   it('should render the title', () => {
     expect(element.querySelector('#title')).toBeDefined();
-  })
+  });
   it('should render the Username', () => {
     expect(element.querySelector('#username')).toBeDefined();
-  })
+  });
   it('should render the email', () => {
     expect(element.querySelector('#email')).toBeDefined();
-  })
+  });
 });

@@ -1,23 +1,47 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
-
     <!-- title -->
     <div class="fadeIn first">
-     <h1>Sus User Login</h1>
+      <h1>Sus User Login</h1>
     </div>
 
     <!-- Login Form -->
-    <form [formGroup]="loginForm"  (ngSubmit)="onSubmit(loginForm)">
-      <input type="text" id="login" class="fadeIn second" name="username" formControlName="userName" placeholder="Username" required>
-      <input type="password" id="password" class="fadeIn third" name="password" formControlName="password" placeholder="Password" required>
-      <button [disabled]="!loginForm.valid" class="btn btn-primary btn-rounded fadeIn fourth" (ngSubmit)="onSubmit(loginForm)" id ="submit" type="submit" >Log In</button>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+      <input
+        type="text"
+        id="login"
+        class="fadeIn second"
+        name="username"
+        formControlName="userName"
+        placeholder="Username"
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        class="fadeIn third"
+        name="password"
+        formControlName="password"
+        placeholder="Password"
+        required
+      />
+      <button
+        [disabled]="!loginForm.valid"
+        class="btn btn-primary btn-rounded fadeIn fourth"
+        (ngSubmit)="onSubmit(loginForm)"
+        id="submit"
+        type="submit"
+      >
+        Log In
+      </button>
       <p id="errorMsg">Username or Password are incorrect</p>
     </form>
 
     <!-- Create an Account rout -->
     <div id="formFooter">
-      <a class="underlineHover" href="#signup" routerLink="../signup">Create an Account</a>
+      <a class="underlineHover" href="#signup" routerLink="../signup"
+        >Create an Account</a
+      >
     </div>
-
   </div>
 </div>

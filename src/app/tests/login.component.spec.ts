@@ -51,5 +51,5 @@ describe('LoginComponent', () => {
   });
   it('should not display errorMsg', () => {
     expect(element.querySelector('#errorMsg').display).toBeFalsy();
-  })
+  });
 });

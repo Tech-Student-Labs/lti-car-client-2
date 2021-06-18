@@ -29,7 +29,8 @@
         </li>
       </ul>
     </div>
-    <button *ngIf='token == null; else profile'
+    <button
+      *ngIf="token == null; else profile"
       type="button"
       id="login"
       routerLink="login"
@@ -42,9 +43,10 @@
         type="button"
         id="login"
         routerLink="../profile"
-        class="btn btn-dark">
+        class="btn btn-dark"
+      >
         Profile
       </button>
-  </ng-template>
+    </ng-template>
   </div>
 </nav>

@@ -1,9 +1,11 @@
 <div class="album py-5 bg-light">
-
   <h1>Vehicle Inventory</h1>
 
   <div class="container">
-    <div *ngFor="let vehicle of vehicles" class="custom-styling card-deck mx-auto">
+    <div
+      *ngFor="let vehicle of vehicles"
+      class="custom-styling card-deck mx-auto"
+    >
       <app-vehicle [inventoryVehicle]="vehicle"></app-vehicle>
     </div>
   </div>

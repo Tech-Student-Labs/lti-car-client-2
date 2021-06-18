@@ -14,6 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
     SubmissionHistoryComponent,
     SubmissionHistoryVehicleComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+  ],
 })
 export class ProfileModule {}

@@ -14,8 +14,8 @@ export const routes: Routes = [
   { path: 'submission', component: SubmissionFormComponent },
   { path: 'login', component: LoginComponent },
   { path: 'vehicle/:id', component: VehicleDetailsComponent },
-  { path: 'signup', component: SignupComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'signup', component: SignupComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({
