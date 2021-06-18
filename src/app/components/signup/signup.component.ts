@@ -36,7 +36,7 @@ export class SignupComponent implements OnInit {
 
   register(form: FormGroup): void {
     const userData = JSON.stringify(form.value);
-    this.http.post("https://localhost:5001/User", userData, {
+    this.http.post("http://localhost:5000/User", userData, {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
       })})
