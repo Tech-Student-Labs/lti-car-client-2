@@ -84,9 +84,7 @@ export class SignupComponent implements OnInit {
       .subscribe(
         (response) => {
           const token = (<any>response).token;
-          // localStorage.setItem("jwt", token);
-          // console.log(token);
-          // this.invalidLogin = false;
+          localStorage.setItem("jwt", token)
           this.router.navigate(['/']);
         },
         (err) => {
