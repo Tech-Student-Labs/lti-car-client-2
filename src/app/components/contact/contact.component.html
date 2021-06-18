@@ -1,0 +1,25 @@
+<main class='page contact-page'>
+  <section class='portfolio-block contact'>
+    <div class='container'>
+      <div class='heading'>
+        <h2>Contact us</h2>
+      </div>
+      <form>
+        <div class='mb-3'><label class='form-label' for='name'>Your Name</label><input id='name' class='form-control item'
+                                                                                       type='text' id='name' /></div>
+        <div class='mb-3'><label class='form-label' for='subject'>Subject</label><input id='subject'
+                                                                                        class='form-control item'
+                                                                                        type='text' id='subject' />
+        </div>
+        <div class='mb-3'><label class='form-label' for='message'>Message</label><textarea id='body'
+                                                                                           class='form-control item'
+                                                                                           id='message'></textarea>
+        </div>
+        <div class='mb-3'><a #button class='btn btn-primary btn-lg d-block w-100' type='submit'
+                             [href]='getEmailString()'>Submit Form</a></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+
