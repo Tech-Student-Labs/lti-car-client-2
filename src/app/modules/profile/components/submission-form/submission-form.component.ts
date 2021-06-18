@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 export class SubmissionFormComponent implements OnInit {
   submissionForm: FormGroup;
   vehicle: Vehicle;
+  year: HTMLElement;
+  price: HTMLElement;
+  miles: HTMLElement;
   loading: boolean;
 
   constructor(
@@ -34,6 +37,29 @@ export class SubmissionFormComponent implements OnInit {
     });
     this.vehicle = new Vehicle();
     this.loading = false;
+    this.year = document.getElementById('year-submission');
+    this.price = document.getElementById('price-submission');
+    this.miles = document.getElementById('miles-submission');
+
+    // Prevent minus and hyphen-minus from being used in input
+    this.year.onkeydown = (e) => {
+      if (e.key === '-' || e.key === '-') {
+        return false;
+      }
+    };
+
+    this.price.onkeydown = (e) => {
+      if (e.key === '-' || e.key === '-') {
+        return false;
+      }
+    };
+
+    // Prevent minus and hyphen-minus from being used in input
+    this.miles.onkeydown = (e) => {
+      if (e.key === '-' || e.key === '-') {
+        return false;
+      }
+    };
   }
 
   public onSubmit(form: any): boolean {
@@ -45,7 +71,14 @@ export class SubmissionFormComponent implements OnInit {
     const formData = form.value;
     this.vehicle.make = formData.make;
     this.vehicle.model = formData.model;
+
+    if (+formData.year > this.getMaxYear() || +formData < 1940) {
+      alert(`Year must be between 1940 and ${this.getMaxYear()}`);
+      return false;
+    }
+
     this.vehicle.year = +formData.year;
+
     this.vehicle.vin = formData.vin;
     this.vehicle.miles = +formData.miles;
     this.vehicle.color = formData.color;
@@ -76,4 +109,6 @@ export class SubmissionFormComponent implements OnInit {
         });
     });
   };
+
+  getMaxYear = () => new Date().getFullYear() + 1;
 }
