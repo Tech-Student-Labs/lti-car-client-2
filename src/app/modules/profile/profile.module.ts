@@ -5,6 +5,7 @@ import { SubmissionFormComponent } from 'src/app/modules/profile/components/subm
 import { SubmissionHistoryComponent } from 'src/app/modules/profile/components/submission-history/submission-history.component';
 import { SubmissionHistoryVehicleComponent } from 'src/app/modules/profile/components/submission-history-vehicle/submission-history-vehicle.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SubmissionHistoryComponent,
     SubmissionHistoryVehicleComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
 })
 export class ProfileModule {}
